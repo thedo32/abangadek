@@ -194,7 +194,7 @@ class Printing extends CI_Controller {
         }
 
 
-        // $data['title'] = $data['printing_item']['title'];
+        //$data['title'] = $data['printing_item']['title'];
 
 		$this->load->view('view_header');
         $this->load->view('vprinting', $data);

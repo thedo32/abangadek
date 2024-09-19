@@ -92,8 +92,8 @@ class Baliho extends CI_Controller {
         }
 
     // Pagination configuration
-		$config['base_url'] = base_url('produk/baliho/index');
-		$config['total_rows'] = $this->Mproduk->get_total_produk("Printing");
+		$config['base_url'] = base_url('baliho/index');
+		$config['total_rows'] = $this->Mproduk->get_total_produk("Baliho");
 		$config['per_page'] = 6;
 		$config['uri_segment'] = 3;
 

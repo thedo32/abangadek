@@ -55,12 +55,12 @@
                         <?php foreach ($interior as $interior_list): ?>
                         <tr>
                             <td>
-                               <a href="<?php echo site_url('client/view/' . $interior_list['slug']); ?>"><?php echo $interior_list['title']; ?></a>
+                               <a href="<?php echo site_url('interior/view/' . $interior_list['slug']); ?>"><?php echo $interior_list['title']; ?></a>
                             </td>
                             <td><?php echo character_limiter($interior_list['text'],30); ?></td>
                             <td>
-                                <a href="<?php echo site_url('news/edit/client/' . $interior_list['id']); ?>">Edit</a><p>
-                                <a href="<?php echo site_url('news/delete/client/' . $interior_list['id']); ?>" onclick="return confirm('Are you sure you want to delete this news?');">Delete</a>
+                                <a href="<?php echo site_url('news/edit/produk/' . $interior_list['id']); ?>">Edit</a><p>
+                                <a href="<?php echo site_url('news/delete/produk/' . $interior_list['id']); ?>" onclick="return confirm('Are you sure you want to delete this news?');">Delete</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -80,8 +80,8 @@
 							 <?php foreach ($interior as $index => $interior_list): ?>
 								<td>
 									<div class="newsbox">
-										 <div class="md-title"><a href="<?php echo site_url('client/view/' . $interior_list['slug']); ?>" title="<?php echo $interior_list['title']; ?>"><?php echo $interior_list['title']; ?></a></div><br>
-										 <a href="<?php echo site_url('client/view/' . $interior_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $interior_list['title']; ?>"><img src= "<?php echo base_url($interior_list['cover']);?>" height="280" width="280" class=news-imgthumb ></a>
+										 <div class="md-title"><a href="<?php echo site_url('interior/view/' . $interior_list['slug']); ?>" title="<?php echo $interior_list['title']; ?>"><?php echo $interior_list['title']; ?></a></div><br>
+										 <a href="<?php echo site_url('interior/view/' . $interior_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $interior_list['title']; ?>"><img src= "<?php echo base_url($interior_list['cover']);?>" height="280" width="280" class=news-imgthumb ></a>
 										 <div class="sm-title"><?php echo character_limiter($interior_list['text'], 5); ?></div>
 									</div>
 								</td>

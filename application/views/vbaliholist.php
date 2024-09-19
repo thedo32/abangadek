@@ -55,12 +55,12 @@
                         <?php foreach ($baliho as $baliho_list): ?>
                         <tr>
                             <td>
-                               <a href="<?php echo site_url('client/view/' . $baliho_list['slug']); ?>"><?php echo $baliho_list['title']; ?></a>
+                               <a href="<?php echo site_url('baliho/view/' . $baliho_list['slug']); ?>"><?php echo $baliho_list['title']; ?></a>
                             </td>
                             <td><?php echo character_limiter($baliho_list['text'],30); ?></td>
                             <td>
-                                <a href="<?php echo site_url('news/edit/client/' . $baliho_list['id']); ?>">Edit</a><p>
-                                <a href="<?php echo site_url('news/delete/client/' . $baliho_list['id']); ?>" onclick="return confirm('Are you sure you want to delete this news?');">Delete</a>
+                                <a href="<?php echo site_url('news/edit/produk/' . $baliho_list['id']); ?>">Edit</a><p>
+                                <a href="<?php echo site_url('news/delete/produk/' . $baliho_list['id']); ?>" onclick="return confirm('Are you sure you want to delete this news?');">Delete</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -80,8 +80,8 @@
 							 <?php foreach ($baliho as $index => $baliho_list): ?>
 								<td>
 									<div class="newsbox">
-										 <div class="md-title"><a href="<?php echo site_url('client/view/' . $baliho_list['slug']); ?>" title="<?php echo $baliho_list['title']; ?>"><?php echo $baliho_list['title']; ?></a></div><br>
-										 <a href="<?php echo site_url('client/view/' . $baliho_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $baliho_list['title']; ?>"><img src= "<?php echo base_url($baliho_list['cover']);?>" height="280" width="280" class=news-imgthumb ></a>
+										 <div class="md-title"><a href="<?php echo site_url('baliho/view/' . $baliho_list['slug']); ?>" title="<?php echo $baliho_list['title']; ?>"><?php echo $baliho_list['title']; ?></a></div><br>
+										 <a href="<?php echo site_url('baliho/view/' . $baliho_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $baliho_list['title']; ?>"><img src= "<?php echo base_url($baliho_list['cover']);?>" height="280" width="280" class=news-imgthumb ></a>
 										 <div class="sm-title"><?php echo character_limiter($baliho_list['text'], 5); ?></div>
 									</div>
 								</td>

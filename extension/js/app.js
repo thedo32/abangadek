@@ -422,3 +422,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 });
+
+
+// Function to handle dropdown selection
+function selectProduct(event, product) {
+	event.preventDefault();  // Prevent page jump
+	document.getElementById('product-input').value = product;  // Set the product value in input
+}
+

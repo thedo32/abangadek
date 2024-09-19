@@ -43,6 +43,9 @@
 					<a id="addUserLink" href="<?php echo base_url('register/add'); ?>">ADD USER</a>
 				</li>
 				<li class="nav-item">
+					<a id="addProdukLink" href="<?php echo base_url('news/add/produk'); ?>">ADD PRODUK</a>
+				</li>
+				<li class="nav-item">
 					<a id="addClientLink" href="<?php echo base_url('news/add/client'); ?>">ADD CLIENT</a>
 				</li>
 				<li class="nav-item">
@@ -92,7 +95,9 @@ const links = {
     '/client': document.getElementById('clientLink'),
     '/register': document.getElementById('dashboardLink'),
     '/register/add': document.getElementById('addUserLink'),
-    '/news/add/client': document.getElementById('addClientLink')
+	'/news/add/produk': document.getElementById('addProdukLink'),
+	'/news/add/client': document.getElementById('addClientLink')
+   
 };
 
 // Loop through the links and set the active link color if URL matches, excluding the 'home' link

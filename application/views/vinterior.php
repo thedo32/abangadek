@@ -18,7 +18,7 @@
 		$name = $this->session->userdata("name");
 	endif; 
 	
-	$pesanan = $client->title;
+	$pesanan = $interior->title;
 
 	$whatsappLink = "https://wa.me/62811663504?text=" . urlencode("Halo Abang Adek Advertising, Saya $name tertarik untuk memesan $pesanan");
 
@@ -35,13 +35,13 @@
 	<table class=read-table>
 		<tbody>
 			<tr>
-				<td><h4><?php echo set_value('title', $client->title); ?></h4></div></td>
+				<td><h4><?php echo set_value('title', $interior->title); ?></h4></div></td>
 			</tr>
 			<tr>
-				<td><h5><?php echo htmlspecialchars_decode(set_value('text', $client->text)); ?></h5></td>
+				<td><h5><?php echo htmlspecialchars_decode(set_value('text', $interior->text)); ?></h5></td>
 			</tr>
 			<tr>
-				<td><div class=slideshow-container-post><img src="<?php echo base_url($client->cover); ?>" height=150% width=150% alt="Cover Image"></div></td>
+				<td><div class=slideshow-container-post><img src="<?php echo base_url($interior->cover); ?>" height=150% width=150% alt="Cover Image"></div></td>
 			</tr>
 			<!-- <tr>
 				<td>Visitor Location: <?php //echo $city; ?>, <?php //echo $country; ?></p></td>

@@ -42,7 +42,8 @@ class Mproduk extends CI_Model {
     // Get total number of news
     public function get_total_produk($menu) {
         $this->db->where('produk', $menu);
-		return $this->db->count_all('product');
+		//return $this->db->count_all('product');
+		return $this->db->count_all_results('product');  // Use count_all_results() with where condition
     }
 
     // Get news with pagination

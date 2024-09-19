@@ -25,10 +25,24 @@ class News extends CI_Controller {
     public function add($menu) {
         // Check if form submitted
 		 
-      if ($this->input->post()) {
+		if ($this->input->post()) {
             // Form validation rules
-            $this->form_validation->set_rules('title', 'Title', 'required|is_unique[news.title]');
-            $this->form_validation->set_rules('text', 'Text', 'required');
+            if ($menu === "client"){
+    			// check duplicated client title in client table
+				$this->form_validation->set_rules('title', 'Title', 'required|is_unique[client.title]');
+			}elseif ($menu === "produk"){
+				// check duplicated client title in product table
+				$this->form_validation->set_rules('title', 'Title', 'required|is_unique[product.title]');
+			}else{
+				// check duplicated client title in product table
+				$this->form_validation->set_rules('title', 'Title', 'required|is_unique[news.title]');
+			}
+		
+            
+			//required form data
+			$this->form_validation->set_rules('text', 'Text', 'required');
+			$this->form_validation->set_rules('cover', 'Cover', 'required');
+			$this->form_validation->set_rules('produk', 'Produk', 'required');
 
             // If form validation succeeds
             if ($this->form_validation->run() == TRUE) {
@@ -37,8 +51,8 @@ class News extends CI_Controller {
 				$config['upload_path'] = './storage/app/public/images/blog/';
 				$config['allowed_types'] = 'gif|jpg|jpeg|png|heic|webp';
 				$config['max_size'] = 2048; // 2MB
-				$config['max_width'] = 2048;
-				$config['max_height'] = 1536;
+				$config['max_width'] = 3000;
+				$config['max_height'] = 3000;
 
 				$this->load->library('upload', $config);
 
@@ -46,14 +60,10 @@ class News extends CI_Controller {
 					$error = array('error' => $this->upload->display_errors());
 					$this->session->set_tempdata('add_success',$error['error'], 15);
 
-					 if ($menu === "client"){
+					if ($menu === "client"){
     					redirect('client/index');
-					}elseif ($menu === "printing"){
-						redirect('produk/printing/index');
-					}elseif ($menu === "interior"){
-						redirect('produk/interior/index');
-					}elseif ($menu === "baliho"){
-						redirect('produk/baliho/index');
+					}elseif ($menu === "produk"){
+    					redirect('produk/index');
 					}else{
 						// Redirect to news list page
 						redirect('news/index');
@@ -77,7 +87,7 @@ class News extends CI_Controller {
 					if ($menu === "client"){
     				// Add client in database
 					$this->Mclient->add_client($data);
-					}elseif (strpos($menu, 'produk') !== false){
+					}elseif ($menu === "produk"){
 						// add produk in database
 						$this->Mproduk->add_produk($data);
 					}else{
@@ -89,12 +99,8 @@ class News extends CI_Controller {
 
 					if ($menu === "client"){
     					redirect('client/index');
-					}elseif (strpos($menu, 'printing') !== false){
-						redirect('produk/printing/index');
-					}elseif (strpos($menu, 'interior') !== false){
-						redirect('produk/interior/index');
-					}elseif (strpos($menu, 'baliho') !== false){
-						redirect('produk/baliho/index');
+					}elseif ($menu === "produk"){
+    					redirect('produk/index');
 					}else{
 						// Redirect to news list page
 						redirect('news/index');
@@ -122,7 +128,7 @@ class News extends CI_Controller {
 	if ($menu === "client"){
     // Get news data by id
 		$news = $this->Mclient->get_client($id);
-	}elseif (strpos($menu, 'produk') !== false{
+	}elseif ($menu === "produk"){
 		$news = $this->Mproduk->get_produk($id);
 	}else{
 		$news = $this->Mnews->get_news($id);
@@ -137,12 +143,30 @@ class News extends CI_Controller {
     if ($this->input->post()) {
         // Form validation rules
 
-		if ($this->input->post('title') === $news->title): 
-			$this->form_validation->set_rules('title', 'Title', 'required');
-       	else:
-		   $this->form_validation->set_rules('title', 'Title', 'required|is_unique[news.title]');
-		endif;
+		if ($menu === "client"){
+			if ($this->input->post('title') === $news->title): 
+				$this->form_validation->set_rules('title', 'Title', 'required');
+       		else:
+				$this->form_validation->set_rules('title', 'Title', 'required|is_unique[client.title]');
+			endif;
+		} elseif ($menu === "produk") {
+			if ($this->input->post('title') === $news->title): 
+				$this->form_validation->set_rules('title', 'Title', 'required');
+       		else:
+				$this->form_validation->set_rules('title', 'Title', 'required|is_unique[produk.title]');
+			endif;
+		} else {
+			if ($this->input->post('title') === $news->title): 
+				$this->form_validation->set_rules('title', 'Title', 'required');
+       		else:
+				$this->form_validation->set_rules('title', 'Title', 'required|is_unique[news.title]');
+			endif;
+		}
+
+		//required form data
 		$this->form_validation->set_rules('text', 'Text', 'required');
+		$this->form_validation->set_rules('produk', 'Produk', 'required');
+
 
         // If form validation succeeds
 
@@ -151,8 +175,8 @@ class News extends CI_Controller {
 				$config['upload_path'] = './storage/app/public/images/blog/';
 				$config['allowed_types'] = 'gif|jpg|jpeg|png|heic|webp';
 				$config['max_size'] = 2048; // 2MB
-				$config['max_width'] = 2048;
-				$config['max_height'] = 1536;
+				$config['max_width'] = 3000;
+				$config['max_height'] = 3000;
 
 				$this->load->library('upload', $config);
 
@@ -174,7 +198,7 @@ class News extends CI_Controller {
 					if ($menu === "client"){
     					// Update kafe in database
 						$this->Mclient->edit_client($id, $data);
-					}elseif (strpos($menu, 'produk') !== false){
+					}elseif ($menu === "produk"){
 						// Update wisata in database
 						$this->Mproduk->edit_produk($id, $data);
 					}else{
@@ -189,12 +213,8 @@ class News extends CI_Controller {
 
 					if ($menu === "client"){
     					redirect('client/index');
-					}elseif (strpos($menu, 'printing') !== false){
-						redirect('produk/printing/index');
-					}elseif (strpos($menu, 'interior') !== false){
-						redirect('produk/interior/index');
-					}elseif (strpos($menu, 'baliho') !== false){
-						redirect('produk/baliho/index');
+					}elseif ($menu === "produk"){
+    					redirect('produk/index');
 					}else{
 						// Redirect to news list page
 						redirect('news/index');
@@ -209,23 +229,20 @@ class News extends CI_Controller {
 						'title' => $this->input->post('title'),
 						'slug' => $slug,
 						'text' => $this->input->post('text'),
-						'produk' => $this_>input->post('produk'),
+						'produk' => $this->input->post('produk'),
 						'cover'=> $cover_path,
 						'updated_at' => date('Y-m-d H:i:s')
 					);
 
-					if ($menu === "padang"){
-    					// Update kafe in database
-						$this->Mpadang->edit_padang($id, $data);
-					}elseif ($menu === "taluak"){
-						// Update wisata in database
-						$this->Mtaluak->edit_taluak($id, $data);
-					}elseif ($menu === "painan"){
-						// Update creative space in database
-						$this->Mpainan->edit_painan($id, $data);
+					if ($menu === "client"){
+    				// Add client in database
+					$this->Mclient->edit_client($id, $data);
+					}elseif ($menu="produk"){
+						// add produk in database
+						$this->Mproduk->edit_produk($id,$data);
 					}else{
-						// Update news in database
-						$this->Mnews->edit_news($id, $data);
+						// add news from database
+						$this->Mnews->edit_news($id,$data);
 					}
 
           
@@ -235,12 +252,8 @@ class News extends CI_Controller {
 
 					if ($menu === "client"){
     					redirect('client/index');
-					}elseif (strpos($menu, 'printing') !== false){
-						redirect('produk/printing/index');
-					}elseif (strpos($menu, 'interior') !== false){
-						redirect('produk/interior/index');
-					}elseif (strpos($menu, 'baliho') !== false){
-						redirect('produk/baliho/index');
+					}elseif ($menu === "produk"){
+    					redirect('produk/index');
 					}else{
 						// Redirect to news list page
 						redirect('news/index');
@@ -280,19 +293,14 @@ class News extends CI_Controller {
 		
 		if ($menu === "client"){
     		redirect('client/index');
-		}elseif (strpos($menu, 'printing') !== false){
-			redirect('produk/printing/index');
-		}elseif (strpos($menu, 'interior') !== false){
-			redirect('produk/interior/index');
-		}elseif (strpos($menu, 'baliho') !== false){
-			redirect('produk/baliho/index');
+		}elseif ($menu === "produk"){
+    		redirect('produk/index');
 		}else{
 			// Redirect to news list page
 			redirect('news/index');
 		}
 
-		
-    }
+	}
 
     public function index() {
 

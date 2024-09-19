@@ -9,7 +9,7 @@
 		  // $this->load->view("client_slider");
 		  // $this->load->view('side_post');
 	?>
-		
+	</div>	
 	
    <form action="<?php echo base_url('register/add'); ?>" method="post">
     	

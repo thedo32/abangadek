@@ -83,13 +83,16 @@ $route['client/index'] = 'client/index';
 $route['client/view'] = 'client/view';
 
 $route['produk/baliho'] = 'baliho/index'; 
-$route['produk/baliho/index'] = 'baliho/index'; 
-$route['produk/baliho/view'] = 'baliho/view';
+$route['produk/baliho/index'] = 'baliho/index';
+$route['baliho/index'] = 'baliho/index';
+$route['baliho/view'] = 'baliho/view';
 
 $route['produk/interior'] = 'interior/index'; 
 $route['produk/interior/index'] = 'interior/index'; 
-$route['produk/interior/view'] = 'interior/view';
+$route['interior/index'] = 'interior/view';
+$route['interior/view'] = 'interior/view';
 
 $route['produk/printing'] = 'printing/index'; 
-$route['produk/printing/index'] = 'printing/index'; 
-$route['produk/printing/view'] = 'printing/view';
+$route['produk/printing/index'] = 'printing/index';
+$route['printing/index'] = 'printing/index';
+$route['printing/view/'] = 'printing/view';

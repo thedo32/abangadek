@@ -16,53 +16,13 @@
 	
 
     <div class=fix-navbar>
-		<div class=shadowbox><h3>Edit News</h3></div>
-        <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" class=image-logo></a>
-		
-		<div class=fix-menu>
-		<nav class="navbar-expand-lg navbar-light">
-		  	<button class=" table navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-            </button>
-     
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="text-center navbar-nav mr-auto">
-
-
-			<?php if ($this->session->userdata("name") === 'Alpha'):?>
-				<li class="nav-item">
-					<a href="<?php echo base_url('home'); ?>">Home</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('padang'); ?>">Kafe</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('taluak'); ?>" >Wisata</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('painan'); ?>" >Creative Space</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('register'); ?>">User Dashboard</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('register/add'); ?>">Add User</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('news/add/news'); ?>">Add News</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
-				</li>
-			<?php else: ?>
-				redirect(base_url(''));	
-			<?php endif; ?>
-			</ul>
-			</div>
-			</nav>
-		</div>
-	</div>
-			
+		<?php 
+			$this->load->view("fix_logo");
+			$this->load->view("fix_menu");
+			//$this->load->view("header_slider");
+			// $this->load->view('side_post');
+		?>
+	</div>			
 
     <!-- form action style for editing a user -->
 	
@@ -81,6 +41,22 @@
 				<td>Image</td>
 				<td><input type="file" name="cover"></td>
 			</tr>
+				<tr>
+			<td>Produk</td>
+            <td>
+				<!-- Dropdown button -->
+				<div class="dropdown">
+					<button type="button" class="dropbtn">Pilih Produk</button>
+					<div class="dropdown-content">
+						<a href="#" onclick="selectProduct(event, 'Printing')">Printing</a>
+						<a href="#" onclick="selectProduct(event, 'Interior')">Interior</a>
+						<a href="#" onclick="selectProduct(event, 'Baliho')">Baliho</a>
+					</div>
+				</div>
+				<!-- Text input to be filled by dropdown -->
+				<input type="text" size="30" id="product-input" name="produk" value="<?php echo set_value('produk', $news->produk); ?>">
+			</td>
+		</tr>
             <tr>
                 <td></td>
                 <td><input type="submit" value="Save Edit"></td>
@@ -90,3 +66,7 @@
 	
 	<?php echo validation_errors(); ?>
 	<br><br>
+
+<script>
+	imageClickable();
+</script>

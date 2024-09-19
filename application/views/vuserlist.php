@@ -18,58 +18,14 @@
 
 </head>
 <body class=bg-body>
-    <div class=fix-navbar>
-		<div class=shadowbox><h3>User List</h3></div>
-        <div class="image-clickable">
-			<canvas id="imageCanvas"></canvas>
-		</div>
-		<br>
-		<!-- <a alt="Menara" href="<?php echo base_url('home');?>"><img src="/storage/app/public/images/logo/logo-abangadek.png" class=image-logo></a>-->
-		
-		<div class=logged-in>
-				  <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a><br>
-				<a href="<?php echo base_url('login/logout'); ?>"class=h8>Logout</a>
-		</div>
-	
-		
-		<div class=fix-menu>
-			<?php echo validation_errors(); ?>
-
-			<nav class="navbar-expand-lg navbar-light">
-		  	<button class=" table navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-			 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="text-center navbar-nav mr-auto">
-			<?php if ($this->session->userdata("name") === 'Alpha'):?>
-				<li class="nav-item">
-					<a href="<?php echo base_url('padang'); ?>" >TENTANG KAMI</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('produk'); ?>" >PRODUK</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('client'); ?>" >CLIENT</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('register'); ?>">USER DASHBOARD</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('register/add'); ?>">ADD USER</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('news/add/news'); ?>">ADD NEWS</a>
-				</li>
-			<?php else: 
-				redirect(base_url(''));	
-			endif; ?>
-			</ul>
-			</div>
-			</nav>
-		</div>
-	</div>
+     <div class=fix-navbar>
+	<?php 
+		$this->load->view("fix_logo");
+		$this->load->view("fix_menu");
+		  // $this->load->view("client_slider");
+		  // $this->load->view('side_post');
+	?>
+	</div>	
 
 
 		<!-- notification if add or edit user success-->
