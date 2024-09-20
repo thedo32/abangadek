@@ -41,7 +41,6 @@ class News extends CI_Controller {
             
 			//required form data
 			$this->form_validation->set_rules('text', 'Text', 'required');
-			$this->form_validation->set_rules('cover', 'Cover', 'required');
 			$this->form_validation->set_rules('produk', 'Produk', 'required');
 
             // If form validation succeeds
@@ -81,6 +80,7 @@ class News extends CI_Controller {
 						'cover'=> $cover_path,
 						'created_at' => date('Y-m-d H:i:s'),
 						'produk' => $this->input->post('produk'),
+						'coordinate' => $this->input->post('coordinate'),
 						'user_id' => 1
 					);
 
@@ -230,6 +230,7 @@ class News extends CI_Controller {
 						'slug' => $slug,
 						'text' => $this->input->post('text'),
 						'produk' => $this->input->post('produk'),
+						'coordinate' => $this->input->post('coordinate'),
 						'cover'=> $cover_path,
 						'updated_at' => date('Y-m-d H:i:s')
 					);

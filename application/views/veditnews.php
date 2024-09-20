@@ -57,9 +57,13 @@
 				<input type="text" size="30" id="product-input" name="produk" value="<?php echo set_value('produk', $news->produk); ?>">
 			</td>
 		</tr>
+		<tr>
+            <td>Koordinat</td>
+            <td><input type="text" size="50" name="coordinate" value="<?php echo set_value('coordinate', $news->coordinate); ?>"></td>
+        </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Save Edit"></td>
+                <td><input type="submit" value="Submit Edit"></td>
             </tr>
         </table>
     </form>

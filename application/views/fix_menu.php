@@ -17,39 +17,39 @@
 			<ul class="text-center navbar-nav mr-auto">
 			<?php if ($this->session->userdata("name") === 'Alpha'):?>
 				<li class="nav-item">
-					<a  id="homeLink" href="<?php echo base_url('home'); ?>">HOME</a>
+					<a id="homeLink" href="<?php echo base_url('home'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">HOME</a>
 				</li>
 				<li class="nav-item">
-					 <a id="aboutLink" href="<?php echo base_url('about'); ?>">TENTANG KAMI</a>
+					 <a id="aboutLink" href="<?php echo base_url('about'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">TENTANG KAMI</a>
 				</li>
 				<li class="nav-item dropdown">
                         <!-- Allow the PRODUK link to be clicked and dropdown to show on hover -->
-						<a id="productLink" href="<?php echo base_url('produk'); ?>" class="nav-link" id="produkDropdown" style="color: white;">
+						<a id="productLink" href="<?php echo base_url('produk'); ?>" class="nav-link" id="produkDropdown" style="color: white; margin-right:5px !important; margin-left:5px !important; text-align:center !important;">
 							PRODUK
 						</a>
 						<div class="dropdown-menu" aria-labelledby="produkDropdown">
-							<a id="printingLink" class="dropdown-item" href="<?php echo base_url('produk/printing'); ?>">PRINTING</a>
-							<a id="interiorLink" class="dropdown-item" href="<?php echo base_url('produk/interior'); ?>">INTERIOR</a>
-							<a id="balihoLink" class="dropdown-item" href="<?php echo base_url('produk/baliho'); ?>">BALIHO</a>
+							<a id="printingLink" class="dropdown-item" href="<?php echo base_url('produk/printing'); ?>" style="font-size:1em !important;">PRINTING</a>
+							<a id="interiorLink" class="dropdown-item" href="<?php echo base_url('produk/interior'); ?>" style="font-size:1em !important;">INTERIOR</a>
+							<a id="balihoLink" class="dropdown-item" href="<?php echo base_url('produk/baliho'); ?>" style="font-size:1em !important;">BALIHO</a>
 						</div>
 				</li>
 				<li class="nav-item">
-					<a id="clientLink" href="<?php echo base_url('client'); ?>" >CLIENT</a>
+					<a id="clientLink" href="<?php echo base_url('client'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;" >CLIENT</a>
 				</li>
 				<li class="nav-item">
-					<a id="dashboardLink" href="<?php echo base_url('register'); ?>">USER DASHBOARD</a>
+					<a id="dashboardLink" href="<?php echo base_url('register'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">USER DASHBOARD</a>
 				</li>
 				<li class="nav-item">
-					<a id="addUserLink" href="<?php echo base_url('register/add'); ?>">ADD USER</a>
+					<a id="addUserLink" href="<?php echo base_url('register/add'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">ADD USER</a>
 				</li>
 				<li class="nav-item">
-					<a id="addProdukLink" href="<?php echo base_url('news/add/produk'); ?>">ADD PRODUK</a>
+					<a id="addProdukLink" href="<?php echo base_url('news/add/produk'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">ADD PRODUK</a>
 				</li>
 				<li class="nav-item">
-					<a id="addClientLink" href="<?php echo base_url('news/add/client'); ?>">ADD CLIENT</a>
+					<a id="addClientLink" href="<?php echo base_url('news/add/client'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">ADD CLIENT</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('login/logout'); ?>">LOGOUT</a>
+					<a href="<?php echo base_url('login/logout'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important; margin-right:20px !important;">LOGOUT</a>
 				</li>
 			<?php else: ?>
 				<li class="nav-item">

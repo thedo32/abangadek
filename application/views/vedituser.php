@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Save Edit"></td>
+                <td><input type="submit" value="Submit Edit"></td>
             </tr>
         </table>
     </form>
