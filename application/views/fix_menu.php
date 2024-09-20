@@ -6,8 +6,11 @@
 }
 
 </style>
-
-<div class=fix-menu>
+<?php if ($this->session->userdata("name") === 'Alpha'):?>
+	<div class=fix-menu style="width:100% !important; padding-left:200px !important;">
+<?php else:?>
+	<div class=fix-menu>
+<?php endif; ?>
 			<nav class="navbar-expand-lg navbar-light">
 		  	<button class=" table navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -17,14 +20,14 @@
 			<ul class="text-center navbar-nav mr-auto">
 			<?php if ($this->session->userdata("name") === 'Alpha'):?>
 				<li class="nav-item">
-					<a id="homeLink" href="<?php echo base_url('home'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">HOME</a>
+					<a id="homeLink" href="<?php echo base_url('home'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">HOME</a>
 				</li>
 				<li class="nav-item">
-					 <a id="aboutLink" href="<?php echo base_url('about'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">TENTANG KAMI</a>
+					 <a id="aboutLink" href="<?php echo base_url('about'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">TENTANG KAMI</a>
 				</li>
 				<li class="nav-item dropdown">
                         <!-- Allow the PRODUK link to be clicked and dropdown to show on hover -->
-						<a id="productLink" href="<?php echo base_url('produk'); ?>" class="nav-link" id="produkDropdown" style="color: white; margin-right:5px !important; margin-left:5px !important; text-align:center !important;">
+						<a id="productLink" href="<?php echo base_url('produk'); ?>" class="nav-link" id="produkDropdown" style="color: white; margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">
 							PRODUK
 						</a>
 						<div class="dropdown-menu" aria-labelledby="produkDropdown">
@@ -34,22 +37,22 @@
 						</div>
 				</li>
 				<li class="nav-item">
-					<a id="clientLink" href="<?php echo base_url('client'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;" >CLIENT</a>
+					<a id="clientLink" href="<?php echo base_url('client'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;" >CLIENT</a>
 				</li>
 				<li class="nav-item">
-					<a id="dashboardLink" href="<?php echo base_url('register'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">USER DASHBOARD</a>
+					<a id="dashboardLink" href="<?php echo base_url('register'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">USER DASHBOARD</a>
 				</li>
 				<li class="nav-item">
-					<a id="addUserLink" href="<?php echo base_url('register/add'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">ADD USER</a>
+					<a id="addUserLink" href="<?php echo base_url('register/add'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">ADD USER</a>
 				</li>
 				<li class="nav-item">
-					<a id="addProdukLink" href="<?php echo base_url('news/add/produk'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">ADD PRODUK</a>
+					<a id="addProdukLink" href="<?php echo base_url('news/add/produk'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">ADD PRODUK</a>
 				</li>
 				<li class="nav-item">
-					<a id="addClientLink" href="<?php echo base_url('news/add/client'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important;">ADD CLIENT</a>
+					<a id="addClientLink" href="<?php echo base_url('news/add/client'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">ADD CLIENT</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('login/logout'); ?>" style="margin-right:5px !important; margin-left:5px !important; text-align:center !important; margin-right:20px !important;">LOGOUT</a>
+					<a href="<?php echo base_url('login/logout'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important; margin-right:20px !important;">LOGOUT</a>
 				</li>
 			<?php else: ?>
 				<li class="nav-item">
@@ -81,7 +84,7 @@
 			</nav>
 		</div>
 	</div>
-
+	
 <script>
 // Get the current URL path
 let currentUrl = window.location.pathname;
