@@ -63,7 +63,7 @@ $route['login/logout'] = 'login/logout';
 $route['login/(:any)'] = 'view/$1';
 $route['login/index'] = 'login/index';
 $route['api/login'] = 'login/apilogin'; // Maps API login requests to the actionlogin method in the Login controller
-$route['api/logout'] = 'login/logout';     // Maps API logout requests to the logout method in the Login controller
+//$route['api/logout'] = 'login/logout';     // Maps API logout requests to the logout method in the Login controller
 
 $route['register'] = 'register/index'; 
 $route['register/add'] = 'register/add';

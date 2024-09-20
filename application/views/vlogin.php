@@ -31,9 +31,43 @@
 			<a href="<?php echo base_url('login'); ?>"class=h7>Login</a>
 		</div>
 
-		<?php 
-			$this->load->view("fix_menu");
-		?>	
+		<div class=fix-menu>
+			<nav class="navbar-expand-lg navbar-light">
+		  	<button class=" table navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+     
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="text-center navbar-nav mr-auto">
+				<li class="nav-item">
+					<a id="homeLink" href="<?php echo base_url('home'); ?>">HOME</a>
+				</li>
+				<li class="nav-item">
+					 <a id="aboutLink" href="<?php echo base_url('about'); ?>">TENTANG KAMI</a>
+				</li>
+				<li class="nav-item dropdown">
+                        <!-- Allow the PRODUK link to be clicked and dropdown to show on hover -->
+						<a id="productLink" href="<?php echo base_url('produk'); ?>" class="nav-link" id="produkDropdown" style="color: white;">
+							PRODUK
+						</a>
+						<div class="dropdown-menu" aria-labelledby="produkDropdown">
+							<a id="printingLink" class="dropdown-item" href="<?php echo base_url('produk/printing'); ?>">PRINTING</a>
+							<a id="interiorLink" class="dropdown-item" href="<?php echo base_url('produk/interior'); ?>">INTERIOR</a>
+							<a id="balihoLink" class="dropdown-item" href="<?php echo base_url('produk/baliho'); ?>">BALIHO</a>
+						</div>
+				</li>
+				<li class="nav-item">
+					<a id="clientLink" href="<?php echo base_url('client'); ?>" >CLIENT</a>
+				</li>
+				<li class="nav-item">
+					<a id="logLink" href="<?php echo base_url('login'); ?>" >LOGIN</a>
+				</li>
+			
+			</ul>
+			</div>
+			</nav>
+		</div>
+	
 		</div>
 	
 
