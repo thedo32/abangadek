@@ -77,7 +77,7 @@ class Baliho extends CI_Controller {
         $title = "Baliho";
         $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address, $referrer, $utm_params, $agent);
 
-			// Get city and country based on IP address
+		// Get city and country based on IP address
         require_once 'vendor/autoload.php';
         $reader = new Reader('extension/db/GeoLite2-City.mmdb');
         try {
@@ -111,8 +111,13 @@ class Baliho extends CI_Controller {
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data['baliho'] = array(); // Initialize as empty array
 		$data['baliho'] = $this->Mproduk->get_produk_produk($config['per_page'], $page, "Baliho");
+		
+		// Fetch all Baliho coordinates for the map (no pagination)
+		$data['baliho_all'] = $this->Mproduk->get_all_coordinates('Baliho'); // Assuming this method returns all Baliho data with coordinates
+
+
 		// Log the fetched data for debugging
-		log_message('debug', 'Fetched baliho data: ' . print_r($data['baliho'], true));
+		//log_message('debug', 'Fetched baliho data: ' . print_r($data['baliho'], true));
 
 
     // Load baliho list view

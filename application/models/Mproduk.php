@@ -56,11 +56,21 @@ class Mproduk extends CI_Model {
     }
 
 
-	public function increment_hit_count($title, $user_id, $id, $ip_address, $referrer) {
+	//public function increment_hit_count($title, $user_id, $id, $ip_address, $referrer) {
         
 		 // Increment the hit count in the taluak table
          //$this->db->where('id', $id);
          //$this->db->set('hit_count', 'hit_count+1', FALSE);
          //$this->db->update('taluak');
-    }	
+    //}	
+
+	public function get_all_coordinates($menu) {
+    $this->db->select('title, coordinate, cover, slug');
+    $this->db->from('product'); 
+    $this->db->where('produk', $menu); 
+    $query = $this->db->get();
+
+    return $query->result_array();
+}
+
 }

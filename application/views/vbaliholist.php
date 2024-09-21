@@ -36,6 +36,54 @@
     <p id="addeditSuccessMessage" style="color: green;"><?php echo $this->session->tempdata('edit_success'); ?></p>
     <?php endif; ?>
 
+	<br>
+	<h2>&nbsp;&nbsp;&nbsp;&nbsp;Peta Lokasi Baliho</h2>
+    <!-- Map container -->
+    <div id="map" style="height: 600px; width: 95%; margin:auto; font-size:1.5em;">
+	
+	</div>
+
+    <!-- Leaflet JS (from the 'extension/js/' folder) -->
+    <script src="<?php echo base_url('extension/js/leaflet.js'); ?>"></script>
+
+	
+	<script>
+    // Initialize the map and set its default view
+    var map = L.map('map').setView([-0.9491813292632251, 100.36379707549786], 12);
+
+    // Load and display tile layers on the map
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Custom icon for markers
+    var icon1 = L.icon({
+        iconUrl: '<?= base_url('icon/icon-marker.png'); ?>',
+        iconSize: [60, 62],   // size of the icon
+        iconAnchor: [17, 94], // point of the icon which will correspond to marker's location
+        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
+    // Loop through the baliho list in PHP and place markers dynamically
+    <?php if (is_array($baliho_all)): ?>
+        <?php foreach ($baliho_all as $baliho_map): ?>
+            var coordinate = "<?php echo $baliho_map['coordinate']; ?>".split(","); // Split the coordinate string into [latitude, longitude]
+            var title = "<?php echo $baliho_map['title']; ?>"; // Get the title for popup
+             var url = '<a href="<?php echo site_url('baliho/view/' . $baliho_map['slug']); ?>" title="<?php echo $baliho_map['title']; ?>">' +
+                  '<img src="<?php echo base_url($baliho_map['cover']); ?>" target="_blank" height="240" width="300" class="news-imgthumb"></a>'; // Image with 200x160 title for popup
+			var popupContent = "<b>" + title + "</b><br><br>" + url +"<br><br>";
+
+            // Place a marker on the map with the coordinates from $baliho_map['coordinate']
+            L.marker([parseFloat(coordinate[0]), parseFloat(coordinate[1])], {icon: icon1})
+                .bindTooltip(title, {direction: 'top'})
+				.bindPopup(popupContent)
+                .addTo(map);
+        <?php endforeach; ?>
+    <?php endif; ?>
+</script>
+
+<br>
+
    
   
         <div>
@@ -132,8 +180,3 @@
 	 shiftBelowImgCenter();
 	 imageClickable();
     </script>
-
-
-
-
-	

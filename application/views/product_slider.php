@@ -34,7 +34,7 @@
 					<div class="rotating-gradient">
 						<a alt="Baliho" href="<?php echo base_url('produk/baliho'); ?>"><img src="/storage/app/public/images/logo/logo-sm.png"></a>
 					</div>
-					<a alt="Printing" href="<?php echo base_url('produk/printing'); ?>"><h1>About Us</h1></a>
+					<a alt="Printing" href="<?php echo base_url('produk/baliho'); ?>"><h1>Baliho</h1></a>
 				</div>
 				</td>
 			

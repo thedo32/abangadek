@@ -21,4 +21,7 @@
 
 		        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>../extension/css/apptoo.css">
 
+				<!-- Leaflet CSS (from the 'extension/css/' folder) -->
+				<link rel="stylesheet" href="<?php echo base_url('extension/css/leaflet.css'); ?>" />
+
 				<title>Abang Adek Advertising</title>	
