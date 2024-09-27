@@ -26,32 +26,96 @@
 
 	<div class=h11>
 		<p></p>
-		<h6>Kontak Whatsapp Pemesanan:</h6>
-		<a href="<?php echo $whatsappLink; ?>" target=_blank>
-			<img src="/storage/app/public/images/logo/walogo.png" height=50% width=50% alt="Cover Image">
+		<a href="#">
+			<img src="/storage/app/public/images/logo/walogo.png" style="opacity:0; left:30; height:60%; width=60%;" alt="Cover Image">
 		</a><br>
 	</div>
+
+	<?php
+	// Assume $realcoord is fetched from your database or passed dynamically
+	$realcoord = $baliho->realcoord; // Example value: "-0.9426739879486935,100.35564711259373"
+
+	// Split the coordinates into latitude and longitude
+	list($latitude, $longitude) = explode(',', $realcoord);
+
+	// Generate the Google Maps link
+	$googleMapsLink = "https://www.google.com/maps?q=$latitude,$longitude";
+	?>
+
 	  
 	<table class=read-table>
 		<tbody>
 			<tr>
-				<td><h4><?php echo set_value('title', $baliho->title); ?></h4></div></td>
+				<td><h3><?php echo set_value('title', $baliho->title); ?></h3></td>
 			</tr>
 			<tr>
-				<td><h5><?php echo htmlspecialchars_decode(set_value('text', $baliho->text)); ?></h5></td>
+				<td><h4><?php echo htmlspecialchars_decode(set_value('text', $baliho->text)); ?></h4></td>
 			</tr>
 			<tr>
-				<td><div class=slideshow-container-post><img src="<?php echo base_url($baliho->cover); ?>" height=150% width=150% alt="Cover Image"></div></td>
+				<td><div class=slideshow-container-post><img src="<?php echo base_url($baliho->cover); ?>" height=130% width=130% alt="Cover Image"></div></td>
 			</tr>
 			<!-- <tr>
 				<td>Visitor Location: <?php //echo $city; ?>, <?php //echo $country; ?></p></td>
 			</tr> -->
 		</tbody>		
 	</table>
+	<table class=detail-table>
+		  <tr>
+				<td>
+					<div class=slideshow-container-map>	
+					<a href="<?php echo $googleMapsLink; ?>" target="_blank"><h5>Lihat di Google Maps</h5></a><br>
+					<iframe
+					src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1186.0195415491994!2d<?php echo $longitude; ?>!3d<?php echo $latitude; ?>!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwNTYnMzQuMiJTIDEwMMKwMjEnMjIuMyJF!5e0!3m2!1sen!2sid!4v1727339715134!5m2!1sen!2sid"
+					width="700"
+					height="400"
+					style="border:0;"
+					allowfullscreen=""
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class=slideshow-container-map>
+					<a href="#"><h5>Klik Kanan Atas Utk Memperbesar Streetview</h5></a><br>
+					<?php
+						// Assume $baliho->streetview is already defined in your context
+						if (strpos($baliho->streetview, "Tidak tersedia pratinjau") !== false) {
+							// Display the message if Street View is not available
+							echo '<p>Tidak tersedia pratinjau "Google Streetview" di Lokasi Ini.</p>';
+						} else {
+						// Display the iframe if Street View is available
+							echo '<iframe
+								src="' . htmlspecialchars($baliho->streetview) . '"
+								width="700"
+								height="400"
+								style="border:0;"
+								allowfullscreen=""
+								loading="lazy"
+								referrerpolicy="no-referrer-when-downgrade">
+								</iframe>';
+						}
+					?>
+					</div>
+		 		 </td>
+				</tr>	
+			  </div>
+			</table>
 
+
+	
+	<button id="waBtn" title="Whatsapp Btn">Whatsapp</button>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Ûp</button>
 
     <script>
+		//whatsapp button
+	    document.getElementById('waBtn').onclick = function() {
+		   window.open('<?php echo $whatsappLink; ?>', '_blank');
+		};
+
+
 		// for go to top button
         $(document).ready(function() {
             // When the user scrolls down 20px from the top of the document, show the button

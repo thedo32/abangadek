@@ -12,38 +12,38 @@ class Mproduk extends CI_Model {
 
     // Add news to the database
     public function add_produk($data) {
-        return $this->db->insert('product', $data);
+        return $this->db->insert('produk', $data);
     }
 
     // Get news by ID
      public function get_produk($id) {
-        $query = $this->db->get_where('product', array('id' => $id));
+        $query = $this->db->get_where('produk', array('id' => $id));
         return $query->row(); // Fetch the row as an object
     }
 
 	// Get news by slug
      public function get_produk_view($slug) {
-		$query = $this->db->get_where('product', array('slug' => $slug));
+		$query = $this->db->get_where('produk', array('slug' => $slug));
         return $query->row(); // Fetch the row as an object
     }
 
     // Update news in the database
     public function edit_produk($id, $data) {
         $this->db->where('id', $id);
-        return $this->db->update('product', $data);
+        return $this->db->update('produk', $data);
     }
 
     // Delete news from the database
     public function delete_produk($id) {
         $this->db->where('id', $id);
-        return $this->db->delete('product');
+        return $this->db->delete('produk');
     }
 
     // Get total number of news
     public function get_total_produk($menu) {
         $this->db->where('produk', $menu);
-		//return $this->db->count_all('product');
-		return $this->db->count_all_results('product');  // Use count_all_results() with where condition
+		//return $this->db->count_all('produk');
+		return $this->db->count_all_results('produk');  // Use count_all_results() with where condition
     }
 
     // Get news with pagination
@@ -51,7 +51,7 @@ class Mproduk extends CI_Model {
 		$this->db->where('produk', $menu);
 		$this->db->order_by('updated_at', 'DESC');
         $this->db->limit($limit, $offset);
-        $query = $this->db->get('product');
+        $query = $this->db->get('produk');
         return $query->result_array();
     }
 
@@ -66,7 +66,7 @@ class Mproduk extends CI_Model {
 
 	public function get_all_coordinates($menu) {
     $this->db->select('title, coordinate, cover, slug');
-    $this->db->from('product'); 
+    $this->db->from('produk'); 
     $this->db->where('produk', $menu); 
     $query = $this->db->get();
 

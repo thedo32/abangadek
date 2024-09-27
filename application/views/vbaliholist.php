@@ -37,7 +37,31 @@
     <?php endif; ?>
 
 	<br>
-	<h2>&nbsp;&nbsp;&nbsp;&nbsp;Peta Lokasi Baliho</h2>
+	<table style="margin:20px !important; ">
+	<tr>
+		<h2>&nbsp;&nbsp;&nbsp;Peta Lokasi Baliho</h2>
+	</tr>
+	<tr>
+		   <td>
+				<!-- Dropdown button -->
+				<div class="dropdown">
+					<button type="button" class="dropbtn">Pilih Zoom Area</button>
+					<div class="dropdown-content" style=z-index:2000 !important;>
+						<a href="#" onclick="selectArea(event, 'Padang', [-0.9491813292632251, 100.36379707549786],11)">Padang</a>
+						<a href="#" onclick="selectArea(event, 'Painan',[-1.391750740941613, 100.62999963749682],12)">Painan</a>
+						<a href="#" onclick="selectArea(event, 'Padang Pariaman',[-0.662043439539266, 100.25121899040526],11)">Pdg Pariaman</a>
+						<a href="#" onclick="selectArea(event, 'Tanah Datar',[-0.5294974719068765, 100.52315464712437],11)">Tanah Datar</a>
+						<a href="#" onclick="selectArea(event, 'Payakumbuh', [-0.22544051421407338, 100.63168469369624],12)">Payakumbuh</a>
+						<a href="#" onclick="selectArea(event, 'Bukittinggi', [-0.2997614849058326, 100.38355565605849],12)">Bukittinggi</a>
+						<a href="#" onclick="selectArea(event, 'Solok', [-0.777386053571656, 100.65496759986982],12)">Solok</a>
+						<a href="#" onclick="selectArea(event, 'Kab Solok', [-0.924210042894259, 100.72148290222962],11)">Kab. Solok</a>
+					</div>
+				</div>
+				<!-- Text input to be filled by dropdown -->
+				<input type="text" size="30" id="area-input" name="area" value="<?php echo set_value('produk'); ?>">
+			</td>
+	</tr>
+	</table>
     <!-- Map container -->
     <div id="map" style="height: 600px; width: 95%; margin:auto; font-size:1.5em;">
 	
@@ -49,20 +73,16 @@
 	
 	<script>
     // Initialize the map and set its default view
-    var map = L.map('map').setView([-0.9491813292632251, 100.36379707549786], 12);
+    var map = L.map('map').setView(selectedCoord, 12);
 
     // Load and display tile layers on the map
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Custom icon for markers
-    var icon1 = L.icon({
-        iconUrl: '<?= base_url('icon/icon-marker.png'); ?>',
-        iconSize: [60, 62],   // size of the icon
-        iconAnchor: [17, 94], // point of the icon which will correspond to marker's location
-        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-    });
+     // Declare default icon outside the loop
+    let icon1;
+
 
     // Loop through the baliho list in PHP and place markers dynamically
     <?php if (is_array($baliho_all)): ?>
@@ -72,6 +92,36 @@
              var url = '<a href="<?php echo site_url('baliho/view/' . $baliho_map['slug']); ?>" title="<?php echo $baliho_map['title']; ?>">' +
                   '<img src="<?php echo base_url($baliho_map['cover']); ?>" target="_blank" height="240" width="300" class="news-imgthumb"></a>'; // Image with 200x160 title for popup
 			var popupContent = "<b>" + title + "</b><br><br>" + url +"<br><br>";
+
+			
+
+		// Change icon based on title containing "2S-1" or "2S-2"
+		if (title.includes("2S-1")) {
+			// Set icon for 2S-1
+			icon1 = L.icon({
+				iconUrl: '<?= base_url('icon/icon-marker-first.png'); ?>',
+				iconSize: [108, 60],   // size of the icon
+				iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
+				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+		} else if (title.includes("2S-2")) {
+			// Set icon for 2S-2
+			icon1 = L.icon({
+				iconUrl: '<?= base_url('icon/icon-marker-second.png'); ?>',
+				iconSize: [108, 60],   // size of the icon
+				iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
+				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+		}else { 
+			//default
+			icon1 = L.icon({
+				iconUrl: '<?= base_url('icon/icon-marker.png'); ?>',
+				iconSize: [108, 60],   // size of the icon
+				iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
+				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+		}
+
 
             // Place a marker on the map with the coordinates from $baliho_map['coordinate']
             L.marker([parseFloat(coordinate[0]), parseFloat(coordinate[1])], {icon: icon1})

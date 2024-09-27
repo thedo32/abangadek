@@ -430,3 +430,12 @@ function selectProduct(event, product) {
 	document.getElementById('product-input').value = product;  // Set the product value in input
 }
 
+let selectedCoord = [-0.9491813292632251, 100.36379707549786];  // Declare a variable to store the coord value
+
+function selectArea(event, area, coord, zoom) {
+	event.preventDefault();  // Prevent page jump
+	document.getElementById('area-input').value = area;  // Set the product value in input
+	selectedCoord = coord;  // Assign the coord value to the variable
+	map.setView(selectedCoord, zoom);  // Change the map's center to the new coordinates with zoom level
+}
+

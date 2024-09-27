@@ -4,7 +4,7 @@
 
 <body class="bg-body">
 	<div class=fix-navbar>
-	<?php 
+		<?php 
 		$this->load->view("fix_logo");
 		$this->load->view("fix_menu");
 		// $this->load->view("client_slider");
@@ -26,22 +26,22 @@
 
 	<div class=h11>
 		<p></p>
-		<h6>Kontak Whatsapp Pemesanan:</h6>
-		<a href="<?php echo $whatsappLink; ?>" target=_blank>
-			<img src="/storage/app/public/images/logo/walogo.png" height=50% width=50% alt="Cover Image">
+		<a href="#">
+			<img src="/storage/app/public/images/logo/walogo.png" style="opacity:0; left:30; height:60%; width=60%;" alt="Cover Image">
 		</a><br>
 	</div>
+
 	  
 	<table class=read-table>
 		<tbody>
 			<tr>
-				<td><h4><?php echo set_value('title', $interior->title); ?></h4></div></td>
+				<td><h3><?php echo set_value('title', $interior->title); ?></h3></td>
 			</tr>
 			<tr>
-				<td><h5><?php echo htmlspecialchars_decode(set_value('text', $interior->text)); ?></h5></td>
+				<td><h4><?php echo htmlspecialchars_decode(set_value('text', $interior->text)); ?></h4></td>
 			</tr>
 			<tr>
-				<td><div class=slideshow-container-post><img src="<?php echo base_url($interior->cover); ?>" height=150% width=150% alt="Cover Image"></div></td>
+				<td><div class=slideshow-container-post><img src="<?php echo base_url($interior->cover); ?>" height=130% width=130% alt="Cover Image"></div></td>
 			</tr>
 			<!-- <tr>
 				<td>Visitor Location: <?php //echo $city; ?>, <?php //echo $country; ?></p></td>
@@ -49,9 +49,16 @@
 		</tbody>		
 	</table>
 
+	<button id="waBtn" title="Whatsapp Btn">Whatsapp</button>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Ûp</button>
 
     <script>
+		//whatsapp button
+	    document.getElementById('waBtn').onclick = function() {
+		   window.open('<?php echo $whatsappLink; ?>', '_blank');
+		};
+
+
 		// for go to top button
         $(document).ready(function() {
             // When the user scrolls down 20px from the top of the document, show the button
@@ -74,3 +81,4 @@
 		shiftBelowRTable();
 		imageClickable();
 	</script>
+
