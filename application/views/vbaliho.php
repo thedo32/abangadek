@@ -41,8 +41,7 @@
 	// Generate the Google Maps link
 	$googleMapsLink = "https://www.google.com/maps?q=$latitude,$longitude";
 	?>
-
-	  
+		  
 	<table class=read-table>
 		<tbody>
 			<tr>

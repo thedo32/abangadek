@@ -1,4 +1,4 @@
-		<!-- <div class=shadowbox><h4>Menjadikan Promosi Anda Tersenyum</h4></div> -->  
+<!-- <div class=shadowbox><h4>Menjadikan Promosi Anda Tersenyum</h4></div> -->  
         <div class="image-clickable">
 			<canvas id="imageCanvas"></canvas>
 		</div>
@@ -18,3 +18,4 @@
 		// echo $this->db->count_all('client');
 		?>
 		</div>
+

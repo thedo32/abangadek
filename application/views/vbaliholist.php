@@ -15,6 +15,7 @@
     });
 </script>
 
+<link rel="stylesheet" href="/extension/css/leaflet.legend.css" />
 </head>
 
 <body class="bg-body">
@@ -62,27 +63,88 @@
 			</td>
 	</tr>
 	</table>
+
+	<?php 
+		// $this->load->view("fix_legend"); 
+	?>
+
     <!-- Map container -->
     <div id="map" style="height: 600px; width: 95%; margin:auto; font-size:1.5em;">
 	
 	</div>
 
-    <!-- Leaflet JS (from the 'extension/js/' folder) -->
+    <!-- Leaflet JS plugin -->
     <script src="<?php echo base_url('extension/js/leaflet.js'); ?>"></script>
+	<script src="<?php echo base_url('extension/js/leaflet.legend.js'); ?>"></script>
 
 	
 	<script>
-    // Initialize the map and set its default view
+    // Initialize the map and set its default map center and zoom
     var map = L.map('map').setView(selectedCoord, 12);
+
+	var openStreetMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '© OpenStreetMap contributors'
+		});
+
+	var openTopoMapLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+		attribution: '© OpenTopoMap contributors'
+	});
+
+	var openStreetMapHOTLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+		attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
+	
+	var mapBoxLayerStreet = L.tileLayer('https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/12/1171/1566.mvt?style=mapbox://styles/mapbox/streets-v12@00&access_token=pk.eyJ1IjoidGhlZG8zMiIsImEiOiJjbHMxbGRvaDEwYm5yMmtxeGZjenJ1ZnplIn0.HrgG-gRUV-3r4A0qv_Ozaw');
+	
+	var mapBoxLayerRaster = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlZG8zMiIsImEiOiJjamZzYTVlcWIwMGQ5Mnpxbm53N3BpOWI4In0.HjdiCmE4JWMx5QMNNA-ciQ', {
+		tileSize: 256,   // standard tile size
+		zoomOffset: 0,   // no offset for standard tiles
+		maxZoom: 20      // you can set the maximum zoom level as needed
+	});
+
 
     // Load and display tile layers on the map
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
+	// legend
+	 L.control.Legend({
+			collapsed:true,       
+			opacity: 0.3,
+			position: "topleft",
+			symbolWidth: 100,
+			symbolHeight: 100,
+			title: "Legenda:",
+			legends: [{
+                label: "Baliho Satu Sisi",
+				type: "image",
+                url: "/icon/icon-marker.png",
+            },
+			{
+                label: "Baliho Dua Sisi",
+                type: "image",
+				url: "/icon/icon-marker-first.png",
+            }
+			]
+        }).addTo(map);
+
+	//layer control
+		
+	// Base layers (for switching between maps)
+	var baseLayers = {
+		"Open Street Map": openStreetMapLayer,
+		"Open Street Map HOT": openStreetMapHOTLayer,
+		"Open Topo Map": openTopoMapLayer,
+		"Map Box Street": mapBoxLayerStreet,
+		"Map Box Raster": mapBoxLayerRaster,
+	};
+
+	// Add the layer control to the map
+	L.control.layers(baseLayers).addTo(map);
+
      // Declare default icon outside the loop
     let icon1;
-
+	
 
     // Loop through the baliho list in PHP and place markers dynamically
     <?php if (is_array($baliho_all)): ?>
