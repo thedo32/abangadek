@@ -15,7 +15,36 @@
     });
 </script>
 
+<!-- script legend style -->
 <link rel="stylesheet" href="/extension/css/leaflet.legend.css" />
+
+<!-- tom tom traffic map -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.57.0/maps/maps.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/2.23.1//SearchBox.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.57.0/maps/css-styles/traffic-incidents.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.57.0/maps/css-styles/routing.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.57.0/maps/css-styles/poi.css" />
+  <link rel="stylesheet" type="text/css" href="/extension/css/styles.css" />
+  <!-- end of tom tom traffic map -->
+
+
 </head>
 
 <body class="bg-body">
@@ -49,12 +78,12 @@
 					<button type="button" class="dropbtn">Pilih Zoom Area</button>
 					<div class="dropdown-content" style=z-index:2000 !important;>
 						<a href="#" onclick="selectArea(event, 'Padang', [-0.9491813292632251, 100.36379707549786],11)">Padang</a>
-						<a href="#" onclick="selectArea(event, 'Painan',[-1.391750740941613, 100.62999963749682],12)">Painan</a>
+						<a href="#" onclick="selectArea(event, 'Painan',[-1.391750740941613, 100.62999963749682],11)">Painan</a>
 						<a href="#" onclick="selectArea(event, 'Padang Pariaman',[-0.662043439539266, 100.25121899040526],11)">Pdg Pariaman</a>
 						<a href="#" onclick="selectArea(event, 'Tanah Datar',[-0.5294974719068765, 100.52315464712437],11)">Tanah Datar</a>
-						<a href="#" onclick="selectArea(event, 'Payakumbuh', [-0.22544051421407338, 100.63168469369624],12)">Payakumbuh</a>
-						<a href="#" onclick="selectArea(event, 'Bukittinggi', [-0.2997614849058326, 100.38355565605849],12)">Bukittinggi</a>
-						<a href="#" onclick="selectArea(event, 'Solok', [-0.777386053571656, 100.65496759986982],12)">Solok</a>
+						<a href="#" onclick="selectArea(event, 'Payakumbuh', [-0.22544051421407338, 100.63168469369624],11)">Payakumbuh</a>
+						<a href="#" onclick="selectArea(event, 'Bukittinggi', [-0.2997614849058326, 100.38355565605849],11)">Bukittinggi</a>
+						<a href="#" onclick="selectArea(event, 'Solok', [-0.777386053571656, 100.65496759986982],11)">Solok</a>
 						<a href="#" onclick="selectArea(event, 'Kab Solok', [-0.924210042894259, 100.72148290222962],11)">Kab. Solok</a>
 					</div>
 				</div>
@@ -73,126 +102,245 @@
 	
 	</div>
 
-    <!-- Leaflet JS plugin -->
-    <script src="<?php echo base_url('extension/js/leaflet.js'); ?>"></script>
-	<script src="<?php echo base_url('extension/js/leaflet.legend.js'); ?>"></script>
-
-	
-	<script>
-    // Initialize the map and set its default map center and zoom
-    var map = L.map('map').setView(selectedCoord, 12);
-
-	var openStreetMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '© OpenStreetMap contributors'
-		});
-
-	var openTopoMapLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-		attribution: '© OpenTopoMap contributors'
-	});
-
-	var openStreetMapHOTLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-		attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
-	
-	var mapBoxLayerStreet = L.tileLayer('https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/12/1171/1566.mvt?style=mapbox://styles/mapbox/streets-v12@00&access_token=pk.eyJ1IjoidGhlZG8zMiIsImEiOiJjbHMxbGRvaDEwYm5yMmtxeGZjenJ1ZnplIn0.HrgG-gRUV-3r4A0qv_Ozaw');
-	
-	var mapBoxLayerRaster = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlZG8zMiIsImEiOiJjamZzYTVlcWIwMGQ5Mnpxbm53N3BpOWI4In0.HjdiCmE4JWMx5QMNNA-ciQ', {
-		tileSize: 256,   // standard tile size
-		zoomOffset: 0,   // no offset for standard tiles
-		maxZoom: 20      // you can set the maximum zoom level as needed
-	});
+<!-- Leaflet JS plugin -->
+<script src="<?php echo base_url('extension/js/leaflet.js'); ?>"></script>
+<script src="<?php echo base_url('extension/js/leaflet.legend.js'); ?>"></script>
 
 
-    // Load and display tile layers on the map
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+<script>
+// Initialize the map and set its default map center and zoom
+var map = L.map('map').setView(selectedCoord, 12);
 
-	// legend
-	 L.control.Legend({
-			collapsed:true,       
-			opacity: 0.3,
-			position: "topleft",
-			symbolWidth: 100,
-			symbolHeight: 100,
-			title: "Legenda:",
-			legends: [{
-                label: "Baliho Satu Sisi",
-				type: "image",
-                url: "/icon/icon-marker.png",
-            },
-			{
-                label: "Baliho Dua Sisi",
-                type: "image",
-				url: "/icon/icon-marker-first.png",
-            }
-			]
-        }).addTo(map);
+// Define tile layers
+var openStreetMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: '© OpenStreetMap contributors'
+}).addTo(map); // Adding OpenStreetMap by default
 
-	//layer control
-		
-	// Base layers (for switching between maps)
-	var baseLayers = {
-		"Open Street Map": openStreetMapLayer,
-		"Open Street Map HOT": openStreetMapHOTLayer,
-		"Open Topo Map": openTopoMapLayer,
-		"Map Box Street": mapBoxLayerStreet,
-		"Map Box Raster": mapBoxLayerRaster,
-	};
+var openTopoMapLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	attribution: '© OpenTopoMap contributors'
+});
 
-	// Add the layer control to the map
-	L.control.layers(baseLayers).addTo(map);
+var openStreetMapHOTLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+	attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+});
 
-     // Declare default icon outside the loop
-    let icon1;
-	
+//var mapBoxLayerStreet = L.tileLayer('https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/12/1171/1566.mvt?style=mapbox://styles/mapbox/streets-v12@00&access_token=pk.eyJ1IjoidGhlZG8zMiIsImEiOiJjamZzYTVlcWIwMGQ5Mnpxbm53N3BpOWI4In0.HjdiCmE4JWMx5QMNNA-ciQ');
 
-    // Loop through the baliho list in PHP and place markers dynamically
-    <?php if (is_array($baliho_all)): ?>
-        <?php foreach ($baliho_all as $baliho_map): ?>
-            var coordinate = "<?php echo $baliho_map['coordinate']; ?>".split(","); // Split the coordinate string into [latitude, longitude]
-            var title = "<?php echo $baliho_map['title']; ?>"; // Get the title for popup
-             var url = '<a href="<?php echo site_url('baliho/view/' . $baliho_map['slug']); ?>" title="<?php echo $baliho_map['title']; ?>">' +
-                  '<img src="<?php echo base_url($baliho_map['cover']); ?>" target="_blank" height="240" width="300" class="news-imgthumb"></a>'; // Image with 200x160 title for popup
-			var popupContent = "<b>" + title + "</b><br><br>" + url +"<br><br>";
+var mapBoxLayerRaster = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidGhlZG8zMiIsImEiOiJjamZzYTVlcWIwMGQ5Mnpxbm53N3BpOWI4In0.HjdiCmE4JWMx5QMNNA-ciQ', {
+	tileSize: 256,
+	zoomOffset: 0,
+	maxZoom: 20
+});
 
-			
+var tomTomLayer = L.tileLayer();
 
-		// Change icon based on title containing "2S-1" or "2S-2"
-		if (title.includes("2S-1")) {
-			// Set icon for 2S-1
-			icon1 = L.icon({
-				iconUrl: '<?= base_url('icon/icon-marker-first.png'); ?>',
-				iconSize: [108, 60],   // size of the icon
-				iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
-				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-			});
-		} else if (title.includes("2S-2")) {
-			// Set icon for 2S-2
-			icon1 = L.icon({
-				iconUrl: '<?= base_url('icon/icon-marker-second.png'); ?>',
-				iconSize: [108, 60],   // size of the icon
-				iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
-				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-			});
-		}else { 
-			//default
-			icon1 = L.icon({
-				iconUrl: '<?= base_url('icon/icon-marker.png'); ?>',
-				iconSize: [108, 60],   // size of the icon
-				iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
-				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-			});
+// Legend control
+L.control.Legend({
+	collapsed: true,
+	opacity: 0.3,
+	position: "topleft",
+	symbolWidth: 100,
+	symbolHeight: 100,
+	title: "Legenda:",
+	legends: [{
+			label: "Baliho Satu Sisi",
+			type: "image",
+			url: "/icon/icon-marker.png",
+		},
+		{
+			label: "Baliho Dua Sisi",
+			type: "image",
+			url: "/icon/icon-marker-first.png",
 		}
+	]
+}).addTo(map);
+
+// Base layers (for switching between maps)
+var baseLayers = {
+	"Open Street Map": openStreetMapLayer,
+	"Open Street Map HOT": openStreetMapHOTLayer,
+	"Open Topo Map": openTopoMapLayer,
+	//"Map Box Street": mapBoxLayerStreet,
+	"Map Box Raster": mapBoxLayerRaster,
+	"Tom Tom Layer (For Traffic)": tomTomLayer
+};
 
 
-            // Place a marker on the map with the coordinates from $baliho_map['coordinate']
+    // Declare default icon outside the loop
+// Create LayerGroup for both 2S-1 and 2S-2 combined
+var twoSLayer = L.layerGroup();  // Layer for both 2S-1 and 2S-2 markers
+var defaultLayer = L.layerGroup();  // Layer for default markers
+
+// Declare default icon outside the loop
+let icon1;
+
+// Loop through the baliho list in PHP and place markers dynamically
+<?php if (is_array($baliho_all)): ?>
+    <?php foreach ($baliho_all as $baliho_map): ?>
+        var coordinate = "<?php echo $baliho_map['coordinate']; ?>".split(","); // Split the coordinate string into [latitude, longitude]
+        var title = "<?php echo $baliho_map['title']; ?>"; // Get the title for popup
+        var url = '<a href="<?php echo site_url('baliho/view/' . $baliho_map['slug']); ?>" title="<?php echo $baliho_map['title']; ?>">' +
+                  '<img src="<?php echo base_url($baliho_map['cover']); ?>" target="_blank" height="240" width="300" class="news-imgthumb"></a>'; // Image with 200x160 title for popup
+        var popupContent = "<b>" + title + "</b><br><br>" + url + "<br><br>";
+
+        // Change icon based on title containing "2S-1" or "2S-2"
+        if (title.includes("2S-1")) {
+            // Set icon for 2S-1
+            icon1 = L.icon({
+                iconUrl: '<?= base_url('icon/icon-marker-first.png'); ?>',
+                iconSize: [108, 60],   // size of the icon
+                iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
+                popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+            
+            // Add to 2S LayerGroup (aggregated for 2S-1 and 2S-2)
             L.marker([parseFloat(coordinate[0]), parseFloat(coordinate[1])], {icon: icon1})
                 .bindTooltip(title, {direction: 'top'})
-				.bindPopup(popupContent)
-                .addTo(map);
-        <?php endforeach; ?>
-    <?php endif; ?>
+                .bindPopup(popupContent)
+                .addTo(twoSLayer);
+
+        } else if (title.includes("2S-2")) {
+            // Set icon for 2S-2
+            icon1 = L.icon({
+                iconUrl: '<?= base_url('icon/icon-marker-second.png'); ?>',
+                iconSize: [108, 60],   // size of the icon
+                iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
+                popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+            
+            // Add to 2S LayerGroup (aggregated for 2S-1 and 2S-2)
+            L.marker([parseFloat(coordinate[0]), parseFloat(coordinate[1])], {icon: icon1})
+                .bindTooltip(title, {direction: 'top'})
+                .bindPopup(popupContent)
+                .addTo(twoSLayer);
+
+        } else { 
+            // Set default icon for other markers
+            icon1 = L.icon({
+                iconUrl: '<?= base_url('icon/icon-marker.png'); ?>',
+                iconSize: [108, 60],   // size of the icon
+                iconAnchor: [10, 50],  // point of the icon which will correspond to marker's location
+                popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+
+            // Add to default LayerGroup
+            L.marker([parseFloat(coordinate[0]), parseFloat(coordinate[1])], {icon: icon1})
+                .bindTooltip(title, {direction: 'top'})
+                .bindPopup(popupContent)
+                .addTo(defaultLayer);
+        }
+    <?php endforeach; ?>
+<?php endif; ?>
+
+// Add the layers to the map (optional to show by default)
+twoSLayer.addTo(map);
+defaultLayer.addTo(map);
+
+// Layer control to toggle between 2S markers (aggregated) and default markers
+var overlayMaps = {
+    "Baliho 1 Sisi": defaultLayer,
+	"Baliho 2 Sisi": twoSLayer
+};
+
+// Add the ALL layer control to the map
+L.control.layers(baseLayers, overlayMaps).addTo(map);
+
 </script>
+
+<br>
+<!-- Tom Tom Traffic Map -->
+<div class="container" style="margin-left: 2%;">
+    <div class="row align-items-center mt-2">
+        <!-- Logo -->
+        <div class="col">
+            <h5>Traffic Di Suatu Area:</h5>
+        </div>
+
+        <!-- Location Selector -->
+        <div class="col">
+            <div id="search-panel-container" class="row">
+                <div id="search-panel" class="pb-4"></div>
+            </div>
+        </div>
+
+        <!-- Traffic Layers Toggle -->
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex align-items-center">
+                    <img class="traffic-icon" src="/icon/traffic_lights.png" alt="" />
+                    <label for="incidents-toggle" class="traffic-text ml-2">Peristiwa</label>
+                    <label class="switch ml-2">
+                        <input id="incidents-toggle" type="checkbox" />
+                        <span class="toggle round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex align-items-center">
+                    <img class="traffic-icon" src="/icon/traffic-flow.png" alt="" />
+                    <label for="flow-toggle" class="traffic-text ml-2">Arus Lalulintas</label>
+                    <label class="switch ml-2">
+                        <input id="flow-toggle" type="checkbox" />
+                        <span class="toggle round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Speed Intervals -->
+        <div class="col">
+            <span class="show-traffic-layers">Interval Kecepatan</span>
+            <div class="row">
+                <div class="col-auto">
+                    <span class="legend-font">0 - 0.01</span>
+                </div>
+                <div class="col-auto">
+                    <span class="legend-font">1</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <div class="row border py-2" style="background-color: #6e6e6e;"></div>
+                </div>
+                <div class="col-auto">
+                    <div class="row border py-2" style="background-color: rgba(245, 8, 2, 0.5);"></div>
+                </div>
+                <div class="col-auto">
+                    <div class="row border py-2" style="background-color: #ff2323;"></div>
+                </div>
+                <div class="col-auto">
+                    <div class="row border py-2" style="background-color: #fad900;"></div>
+                </div>
+                <div class="col-auto">
+                    <div class="row border py-2" style="background-color: #ffff37;"></div>
+                </div>
+                <div class="col-auto">
+                    <div class="row border py-2" style="background-color: #2bc82b;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bounding Box Button -->
+        <div class="col">
+            <button id="bounding-box-button" type="button" class="btn my-2">
+                BOUNDING INCIDENTS
+            </button>
+        </div>
+    </div>
+</div>
+
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.1/bootstrap-slider.min.js"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.57.0/maps/maps-web.min.js"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.57.0/services/services-web.min.js"></script>
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/2.23.1/SearchBox-web.js"></script>
+
+ <script src="<?php echo base_url('extension/js/traffic.js'); ?>"></script>
+
+<!-- end of tom tom map -->
+
 
 <br>
 
