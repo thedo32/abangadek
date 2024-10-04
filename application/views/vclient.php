@@ -77,7 +77,7 @@
         });
 
 		// for expand and collapse below navbar
-		shiftBelowRTable();
+		shiftBelowElements(".read-table", 200, 300, 1, 2);
 		imageClickable();
 	</script>
 

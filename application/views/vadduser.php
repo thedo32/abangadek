@@ -60,7 +60,7 @@
 <script>
 
 	// for expand and collapse below navbar
-	shiftBelowRgTable();
+	shiftBelowElements(".reg-table", 200, 300, 1, 2);
 	imageClickable();
 </script>
 

@@ -57,6 +57,6 @@
 
 
 	// for expand and collapse below navbar
-		shiftBelowContainers();
+		shiftBelowElements(".containers", 0, 270, 1, 2);
 		imageClickable();
 	</script>

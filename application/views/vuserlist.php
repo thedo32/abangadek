@@ -72,7 +72,7 @@
 
 	<script>
 		// for expand and collapse below navbar
-		shiftBelowUTable();
+		shiftBelowElements(".user-table", 200, 310, 1, 2);
 		imageClickable();
 	</script>
 	

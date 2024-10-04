@@ -129,7 +129,7 @@
         });
 
 	// for expand and collapse below navbar
-	shiftBelowImgCenter();
+	shiftBelowElements(".image-logo-center", 110, 270, 1, 2);
 	imageClickable();
     </script>
 

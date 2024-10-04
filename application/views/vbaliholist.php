@@ -17,8 +17,9 @@
 
 <!-- script legend style -->
 <link rel="stylesheet" href="/extension/css/leaflet.legend.css" />
+<link rel="stylesheet" href="/extension/css/leaflet.fullscreen.css" />
 
-<!-- tom tom traffic map -->
+<!-- tom tom traffic map --non active style
 <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -42,7 +43,7 @@
   <link rel="stylesheet" type="text/css"
     href="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.57.0/maps/css-styles/poi.css" />
   <link rel="stylesheet" type="text/css" href="/extension/css/styles.css" />
-  <!-- end of tom tom traffic map -->
+ end of tom tom traffic map -->
 
 
 </head>
@@ -90,6 +91,7 @@
 				<!-- Text input to be filled by dropdown -->
 				<input type="text" size="30" id="area-input" name="area" value="<?php echo set_value('produk'); ?>">
 			</td>
+			<td>&nbsp;&nbsp;Klik Di Kanan Atas Peta Untuk Fullscreen </td>
 	</tr>
 	</table>
 
@@ -105,11 +107,20 @@
 <!-- Leaflet JS plugin -->
 <script src="<?php echo base_url('extension/js/leaflet.js'); ?>"></script>
 <script src="<?php echo base_url('extension/js/leaflet.legend.js'); ?>"></script>
-
+<script src="<?php echo base_url('extension/js/leaflet.fullscreen.min.js'); ?>"></script>
 
 <script>
 // Initialize the map and set its default map center and zoom
 var map = L.map('map').setView(selectedCoord, 12);
+
+
+map.addControl(new L.Control.Fullscreen({
+    title: {
+        'false': 'View Fullscreen',
+        'true': 'Exit Fullscreen'
+    },
+	position: "topright",
+}));
 
 // Define tile layers
 var openStreetMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -138,7 +149,7 @@ var tomTomLayer = L.tileLayer();
 L.control.Legend({
 	collapsed: true,
 	opacity: 0.3,
-	position: "topleft",
+	position: "bottomleft",
 	symbolWidth: 100,
 	symbolHeight: 100,
 	title: "Legenda:",
@@ -243,7 +254,7 @@ var overlayMaps = {
 };
 
 // Add the ALL layer control to the map
-L.control.layers(baseLayers, overlayMaps).addTo(map);
+L.control.layers(baseLayers, overlayMaps, {position: "topleft"}).addTo(map);
 
 </script>
 
@@ -265,19 +276,9 @@ L.control.layers(baseLayers, overlayMaps).addTo(map);
 
         <!-- Traffic Layers Toggle -->
         <div class="col">
-            <div class="row">
+			<div class="row">
                 <div class="col d-flex align-items-center">
-                    <img class="traffic-icon" src="/icon/traffic_lights.png" alt="" />
-                    <label for="incidents-toggle" class="traffic-text ml-2">Peristiwa</label>
-                    <label class="switch ml-2">
-                        <input id="incidents-toggle" type="checkbox" />
-                        <span class="toggle round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col d-flex align-items-center">
-                    <img class="traffic-icon" src="/icon/traffic-flow.png" alt="" />
+                    <img style="width:50px !important;" src="/icon/traffic-flow.png" alt="" />
                     <label for="flow-toggle" class="traffic-text ml-2">Arus Lalulintas</label>
                     <label class="switch ml-2">
                         <input id="flow-toggle" type="checkbox" />
@@ -285,8 +286,18 @@ L.control.layers(baseLayers, overlayMaps).addTo(map);
                     </label>
                 </div>
             </div>
+            <div class="row">
+                <div class="col d-flex align-items-center">
+                    <img style="width:50px !important;"  src="/icon/traffic-flows.png" alt="" />
+                    <label for="incidents-toggle" class="traffic-text ml-2">Peristiwa Lalin</label>
+                    <label class="switch ml-2">
+                        <input id="incidents-toggle" type="checkbox" />
+                        <span class="toggle round"></span>
+                    </label>
+                </div>
+            </div>
         </div>
-
+		&nbsp;
         <!-- Speed Intervals -->
         <div class="col">
             <span class="show-traffic-layers">Interval Kecepatan</span>
@@ -294,11 +305,12 @@ L.control.layers(baseLayers, overlayMaps).addTo(map);
                 <div class="col-auto">
                     <span class="legend-font">0 - 0.01</span>
                 </div>
-                <div class="col-auto">
+		        <div class="col-auto">
                     <span class="legend-font">1</span>
                 </div>
             </div>
             <div class="row">
+				&nbsp;&nbsp;
                 <div class="col-auto">
                     <div class="row border py-2" style="background-color: #6e6e6e;"></div>
                 </div>
@@ -437,6 +449,6 @@ L.control.layers(baseLayers, overlayMaps).addTo(map);
         });
 
 	// for expand and collapse below navbar
-	 shiftBelowImgCenter();
+	  shiftBelowElements(".image-logo-center", 110, 270, 1, 2);
 	 imageClickable();
     </script>

@@ -125,6 +125,6 @@
 <script>
 
 	// for expand and collapse below navbar
-	shiftBelowLTable();
+	shiftBelowElements(".login-table", 200, 350, 1, 2);
 	imageClickable();
 </script>

@@ -8,7 +8,7 @@
 </style>
 
 <br><br><br>
-<table class=product-table>
+<table class=product-table-home>
 				<td>
 				<div class="center-content">
 					<div class="rotating-gradient">
@@ -37,6 +37,4 @@
 					<a alt="Printing" href="<?php echo base_url('produk/baliho'); ?>"><h1>Baliho</h1></a>
 				</div>
 				</td>
-			
-			
 	</table>

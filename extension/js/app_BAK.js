@@ -165,38 +165,189 @@ function plusSlides(n) {
 
 
 // for expand and collapse below navbar slide
-function shiftBelowElements(elementSelector, marginTopCollapsed, marginTopExpanded, fontSizeCollapsed, fontSizeExpanded) {
+function shiftBelowSlide() {
 	document.addEventListener("DOMContentLoaded", function () {
 		var navbarToggler = document.querySelector(".navbar-toggler");
-		var targetElement = document.querySelector(elementSelector);
+		var slideShow = document.querySelector(".slideshow-container");
+		var containerImg = document.querySelector(".slideshow-container-img");
 		var Navbar = document.querySelector(".fix-navbar");
 		var fixMenu = document.querySelector(".fix-menu");
 		var dropMenu = document.querySelector(".dropdown-menu");
 
 		navbarToggler.addEventListener("click", function () {
 			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
-				targetElement.style.marginTop = marginTopCollapsed + "px";
-				fixMenu.style.fontSize = fontSizeCollapsed + "em";
-				dropMenu.style.fontSize = fontSizeCollapsed + "em";
+				slideShow.style.marginTop = "150px";
+				containerImg.style.marginTop = "150px";
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
 			} else {
-				targetElement.style.marginTop = marginTopExpanded + Navbar.offsetHeight + "px";
-				fixMenu.style.fontSize = fontSizeExpanded + "em";
-				dropMenu.style.fontSize = fontSizeCollapsed + "em";
+				slideShow.style.marginTop = 270 + Navbar.offsetHeight + "px"; // Adjust this value based on the height of the navbar when expanded
+				containerImg.style.marginTop = 270 + Navbar.offsetHeight + "px"; // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
 			}
 		});
 	});
 }
 
-// Usage for different elements
-shiftBelowElements(".slideshow-container", 150, 270, 1, 2);
-shiftBelowElements(".image-logo-center", 110, 270, 1, 2);
-shiftBelowElements(".containers", 0, 270, 1, 2);
-shiftBelowElements(".read-table", 200, 300, 1, 2);
-shiftBelowElements(".reg-table", 200, 300, 1, 2);
-shiftBelowElements(".login-table", 200, 350, 1, 2);
-shiftBelowElements(".home-table", 200, 300, 1, 2);
-shiftBelowElements(".user-table", 200, 310, 1, 2);
+function shiftBelowImgCenter() {
+	document.addEventListener("DOMContentLoaded", function () {
+		var navbarToggler = document.querySelector(".navbar-toggler");
+		var slideShow = document.querySelector(".image-logo-center");
+		var Navbar = document.querySelector(".fix-navbar");
+		var fixMenu = document.querySelector(".fix-menu");
+		var dropMenu = document.querySelector(".dropdown-menu");
 
+		navbarToggler.addEventListener("click", function () {
+			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
+				slideShow.style.marginTop = "110px";
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
+			} else {
+				slideShow.style.marginTop = 270 + Navbar.offsetHeight + "px"; // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
+			}
+		});
+	});
+}
+
+function shiftBelowContainers() {
+	document.addEventListener("DOMContentLoaded", function () {
+		var navbarToggler = document.querySelector(".navbar-toggler");
+		var containerS = document.querySelector(".containers");
+		var containerImg = document.querySelector(".slideshow-container-img");
+		var Navbar = document.querySelector(".fix-navbar");
+		var fixMenu = document.querySelector(".fix-menu");
+		var dropMenu = document.querySelector(".dropdown-menu");
+
+		navbarToggler.addEventListener("click", function () {
+			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
+				containerS.style.marginTop = 0;
+				containerImg.style.marginTop = 0;
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
+			} else {
+				containerS.style.marginTop = 270 + Navbar.offsetHeight + "px"; // Adjust this value based on the height of the navbar when expanded
+				containerImg.style.marginTop = 270 + Navbar.offsetHeight + "px"; // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
+			}
+		});
+	});
+}
+
+
+function shiftBelowRTable() {
+	document.addEventListener("DOMContentLoaded", function () {
+		var navbarToggler = document.querySelector(".navbar-toggler");
+		var readTable = document.querySelector(".read-table");
+		var Navbar = document.querySelector(".fix-navbar");
+		var fixMenu = document.querySelector(".fix-menu");
+		var dropMenu = document.querySelector(".dropdown-menu");
+
+		navbarToggler.addEventListener("click", function () {
+			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
+				readTable.style.marginTop = "200px";
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
+			} else {
+				readTable.style.marginTop = 300 + Navbar.offsetHeight + "px" // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
+			}
+		});
+	});
+}
+
+function shiftBelowRgTable() {
+	document.addEventListener("DOMContentLoaded", function () {
+		var navbarToggler = document.querySelector(".navbar-toggler");
+		var regTable = document.querySelector(".reg-table");
+		var Navbar = document.querySelector(".fix-navbar");
+		var fixMenu = document.querySelector(".fix-menu");
+		var dropMenu = document.querySelector(".dropdown-menu");
+
+		navbarToggler.addEventListener("click", function () {
+			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
+				regTable.style.marginTop = "200px";
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
+			} else {
+				regTable.style.marginTop = 300 + Navbar.offsetHeight + "px" // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
+			}
+		});
+	});
+}
+
+
+function shiftBelowLTable() {
+	document.addEventListener("DOMContentLoaded", function () {
+		var navbarToggler = document.querySelector(".navbar-toggler");
+		var loginTable = document.querySelector(".login-table");
+		var Navbar = document.querySelector(".fix-navbar");
+		var fixMenu = document.querySelector(".fix-menu");
+		var dropMenu = document.querySelector(".dropdown-menu");
+
+		navbarToggler.addEventListener("click", function () {
+			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
+				loginTable.style.marginTop = "200px";
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
+			} else {
+				loginTable.style.marginTop = 350 + Navbar.offsetHeight + "px" // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
+			}
+		});
+	});
+}
+
+function shiftBelowHTable() {
+	document.addEventListener("DOMContentLoaded", function () {
+		var navbarToggler = document.querySelector(".navbar-toggler");
+		var homeTable = document.querySelector(".home-table");
+		var Navbar = document.querySelector(".fix-navbar");
+		var fixMenu = document.querySelector(".fix-menu");
+		var dropMenu = document.querySelector(".dropdown-menu");
+
+		navbarToggler.addEventListener("click", function () {
+			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
+				homeTable.style.marginTop = "200px";
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
+			} else {
+				homeTable.style.marginTop = 300 + Navbar.offsetHeight + "px"; // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
+			}
+		});
+	});
+}
+
+function shiftBelowUTable() {
+	document.addEventListener("DOMContentLoaded", function () {
+		var navbarToggler = document.querySelector(".navbar-toggler");
+		var userTable = document.querySelector(".user-table");
+		var Navbar = document.querySelector(".fix-navbar");
+		var fixMenu = document.querySelector(".fix-menu");
+		var dropMenu = document.querySelector(".dropdown-menu");
+
+		navbarToggler.addEventListener("click", function () {
+			if (document.querySelector(".navbar-collapse").classList.contains("show")) {
+				userTable.style.marginTop = "200px";
+				fixMenu.style.fontSize = "1em";
+				dropMenu.style.fontSize = "1em";
+			} else {
+				userTable.style.marginTop = 310 + Navbar.offsetHeight + "px"; // Adjust this value based on the height of the navbar when expanded
+				fixMenu.style.fontSize = "2em";
+				dropMenu.style.fontSize = "1em";
+			}
+		});
+	});
+}
 
 // Function to adjust the margin of sections when scrolling to a specific section
 document.addEventListener("DOMContentLoaded", function () {

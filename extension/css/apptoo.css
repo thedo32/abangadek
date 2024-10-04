@@ -12840,8 +12840,8 @@ textarea.form-control-lg {
 
 .bg-body {
 	/* background-image: url('/storage/app/public/images/bg/bodybg.jpg');*/
-	background-color: #5955552a;
-	background-attachment: scroll;
+	background-color: white;
+	background-attachment: fixed;
 }
 
 /*-- @supports (background-image: url('/storage/app/public/images/bg/bgbody.heic')) {
@@ -13055,6 +13055,7 @@ img {
 
 .image-container-cl {
 	border: 2px solid;
+	background-color: transparent;
 	display: block;
 	border-radius: 10px;
 	max-width: 530px;
@@ -13070,14 +13071,25 @@ img {
 		animation: pulse 0.6s ease-in-out infinite; /* Continuous pulsing on hover */
 	}
 
-.texts-container {
-	max-width: 600px;
+
+.image-container-cl-home {
+	border: 2px solid;
+	background-color: transparent;
+	display: block;
+	border-radius: 10px;
+	max-width: 530px;
 	position: relative;
-	padding-top: 50px;
-	margin-top: 90px;
 	margin-bottom: 20px;
-	margin-left: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	animation: swing 1.5s ease-in-out 0s;
+	text-align: center; /* Centers the image horizontally */
 }
+
+	.image-container-cl-home:hover {
+		animation: pulse 0.6s ease-in-out infinite; /* Continuous pulsing on hover */
+	}
+
 
 .texts-container-hm {
 	position: relative;
@@ -13093,7 +13105,19 @@ img {
 	margin-top: 100px;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: transparent;
 	color: white;
+	text-align: center;
+}
+
+.texts-container-cl-home {
+	position: relative;
+	padding: 10px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+	color: red;
 	text-align: center;
 }
 
@@ -13461,19 +13485,19 @@ img {
 			width: 5%;
 		}
 
+
 .product-table {
-	width: 100%; /* Full width */
-	max-width: 1400px; /* Optional: set a maximum width if desired */
+	width: 100.1%; /* Full width */
+	max-width: 2000px; /* Optional: set a maximum width if desired */
 	display: block;
-	background-color: #ffffff;
+	background-color: white;
 	color: black;
 	font-family: "Tilt Neon", sans-serif;
-	margin: 0 auto; /* Centers the table horizontally */
 	box-sizing: border-box; /* Ensures padding doesn't affect the width */
 }
 
 	.product-table td {
-		width: 33.3%;
+		width: 33.4%;
 		vertical-align: middle;
 		text-align: center;
 	}
@@ -13487,20 +13511,43 @@ img {
 			width: 10%;
 		}
 
+.product-table-home {
+	width: 100.1%; /* Full width */
+	max-width: 2000px; /* Optional: set a maximum width if desired */
+	display: block;
+	background-color: #ffffff;
+	color: black;
+	font-family: "Tilt Neon", sans-serif;
+	box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+	.product-table-home td {
+		width: 33.4%;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+		.product-table-home td:hover {
+			transform: scale(1.1);
+			transition: 1s ease-in-out;
+		}
+
+		.product-table-home td:not(:hover) {
+			width: 10%;
+		}
 
 .about-table {
-	width: 100%; /* Full width */
-	max-width: 1400px; /* Optional: set a maximum width if desired */
+	width: 100.1%; /* Full width */
+	max-width: 2000px; /* Optional: set a maximum width if desired */
 	display: block;
 	background-color: red;
-	color: #000000;
+	color: black;
 	font-family: "Tilt Neon", sans-serif;
-	margin: 0 auto; /* Centers the table horizontally */
 	box-sizing: border-box; /* Ensures padding doesn't affect the width */
 }
 
 	.about-table td {
-		width: 33.3%;
+		width: 33.4%;
 		vertical-align: middle;
 		text-align: center;
 	}
@@ -13511,6 +13558,31 @@ img {
 		}
 
 		.about-table td:not(:hover) {
+			width: 10%;
+		}
+
+.about-table-home {
+	width: 100.1%; /* Full width */
+	max-width: 2000px; /* Optional: set a maximum width if desired */
+	display: block;
+	background-color: white;
+	color: black;
+	font-family: "Tilt Neon", sans-serif;
+	box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+	.about-table-home td {
+		width: 33.4%;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+		.about-table-home td:hover {
+			transform: scale(1.1);
+			transition: 1s ease-in-out;
+		}
+
+		.about-table-home td:not(:hover) {
 			width: 10%;
 		}
 
@@ -14463,6 +14535,27 @@ body {
 .traffic-icon {
 	width: 20px; /* Control the size of icons */
 	height: auto;
+}
+
+#product {
+	background-color: white; /* First section background color */
+	background-size: contain;
+	padding: 50px 0; /* Padding top and bottom */
+	height: 800px; /* Fixed height */
+}
+
+#client {
+	background-color: red; /* Second section background color */
+	background-size: contain;
+	padding: 50px 0; /* Padding top and bottom */
+	height: 800px; /* Fixed height */
+}
+
+#about {
+	background-color: black; /* Third section background color */
+	background-size: contain;
+	padding: 50px 0; /* Padding top and bottom */
+	height: 1200px; /* Fixed height */
 }
 
 

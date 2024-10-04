@@ -56,6 +56,6 @@
 
 
 		// for expand and collapse below navbar
-		shiftBelowSlide();
+		shiftBelowElements(".slideshow-container", 150, 270, 1, 2);
 		imageClickable();
 	</script>

@@ -78,7 +78,8 @@
         });
 
 		// for expand and collapse below navbar
-		shiftBelowRTable();
+		// Call the function for different sections with unique selectors
+		shiftBelowElements(".read-table", 200, 300, 1, 2);
 		imageClickable();
 	</script>
 

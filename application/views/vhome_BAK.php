@@ -1,4 +1,4 @@
-
+     
 </head>
 
 <body class="bg-body">
@@ -7,7 +7,7 @@
 			$this->load->view("fix_logo");
 		?>
 		
-	
+		
 
 	 <!-- <div id="popup" class="popup">
         <div class="popup-content">
@@ -18,44 +18,26 @@
             
         </div>
     </div> -->
-	
+   	
 	<?php 
-		$this->load->view("fix_menu_home");
-		// $this->load->view('side_post');
-	?>
-	</div>
-		
-	<?php 
+		$this->load->view("fix_menu");
 		$this->load->view("home_slider");
-		$this->load->view('image_slider');
-		$this->load->view('wa_container');
-		
+		  // $this->load->view('side_post');
 	?>
-
-	<div id="product" style="width=100%;">
-	<?php 
-			$this->load->view('product_slider_home');
-			//$this->load->view('about_slider_home');
-	?>
+	
 	</div>
 
-
-	<div id="client" style="width=100%;">
+		
 	<?php 
-			$this->load->view("client_slider_home");
+		$this->load->view('image_slider');
+		$this->load->view('product_slider');
+		$this->load->view('about_slider');
+		$this->load->view('wa_container');
+		$this->load->view('post_container');
 	?>
-	<div>
-
-	<div id="about" style="width=100%;">
-	<?php 
-			$this->load->view('post_container_home');
-	?>
-	<div>
-
-
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Ûp</button>
 	<br><br>
-	
+
 	
 
     <script>
@@ -88,11 +70,9 @@
 			 });
 			}
 		});
-			
+
 
 		// for expand and collapse below navbar
-		// shiftBelowContainers();
-		//window.onload = shiftBelowContainersHome;
-
+		shiftBelowContainers();
 		imageClickable();
 	</script>

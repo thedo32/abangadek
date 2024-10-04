@@ -22,9 +22,6 @@
 				<li class="nav-item">
 					<a id="homeLink" href="<?php echo base_url('home'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">HOME</a>
 				</li>
-				<li class="nav-item">
-					 <a id="aboutLink" href="<?php echo base_url('about'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">TENTANG KAMI</a>
-				</li>
 				<li class="nav-item dropdown">
                         <!-- Allow the PRODUK link to be clicked and dropdown to show on hover -->
 						<a id="productLink" href="<?php echo base_url('produk'); ?>" class="nav-link" id="produkDropdown" style="color: white; margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">
@@ -38,6 +35,9 @@
 				</li>
 				<li class="nav-item">
 					<a id="clientLink" href="<?php echo base_url('client'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;" >CLIENT</a>
+				</li>
+				<li class="nav-item">
+					 <a id="aboutLink" href="<?php echo base_url('about'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">TENTANG KAMI</a>
 				</li>
 				<li class="nav-item">
 					<a id="dashboardLink" href="<?php echo base_url('register'); ?>" style="margin-right:5px !important; margin-left:5px !important; font-size:0.9em !important;">USER DASHBOARD</a>
@@ -58,9 +58,6 @@
 				<li class="nav-item">
 					<a id="homeLink" href="<?php echo base_url('home'); ?>">HOME</a>
 				</li>
-				<li class="nav-item">
-					 <a id="aboutLink" href="<?php echo base_url('about'); ?>">TENTANG KAMI</a>
-				</li>
 				<li class="nav-item dropdown">
                         <!-- Allow the PRODUK link to be clicked and dropdown to show on hover -->
 						<a id="productLink" href="<?php echo base_url('produk'); ?>" class="nav-link" id="produkDropdown" style="color: white;">
@@ -74,6 +71,9 @@
 				</li>
 				<li class="nav-item">
 					<a id="clientLink" href="<?php echo base_url('client'); ?>" >CLIENT</a>
+				</li>
+				<li class="nav-item">
+					 <a id="aboutLink" href="<?php echo base_url('about'); ?>">TENTANG KAMI</a>
 				</li>
 				<li class="nav-item">
 					<a id="logLink" href="<?php echo base_url('login'); ?>" >LOGIN</a>
