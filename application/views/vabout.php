@@ -1,5 +1,12 @@
-        
+<style>
+.custom-breadcrumb {
+	padding: 10px;
+	margin: 300px 10px 100px 10px;
+	border-radius: 5px;
+}
+</style>	 
 </head>
+
 
 <body class="bg-body">
 	<div class=fix-navbar>
@@ -15,6 +22,9 @@
 	<?php 
 		$this->load->view('image_slider');
 		$this->load->view('wa_container');
+		$this->load->view('breadcrumb');
+	?>	
+	<?php	
 		$this->load->view('about_container');
 	?>
 

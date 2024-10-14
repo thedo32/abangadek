@@ -30,17 +30,20 @@
 		</a><br>
 	</div>
 
+	<div class=detail-breadcrumb>
+		<a href="<?php echo base_url('client'); ?>"><h4>Kembali Ke Client List</h4></a>
+	</div>
 		  
 	<table class=read-table>
 		<tbody>
 			<tr style="font-size:2em !important;">
-				<td><h3><?php echo set_value('title', $client->title); ?></h3></td>
+				<td><h2><?php echo set_value('title', $client->title); ?></h2></td>
 			</tr>
 			<tr style="font-size:1.4em !important;">
 				<td><h4><?php echo htmlspecialchars_decode(set_value('text', $client->text)); ?></h4></td>
 			</tr>
 			<tr>
-				<td><div class=slideshow-container-post><img src="<?php echo base_url($client->cover); ?>" height=130% width=130% alt="Cover Image"></div></td>
+				<td><div class=slideshow-container-cover><img src="<?php echo base_url($client->cover); ?>" width=130% alt="Cover Image"></div></td>
 			</tr>
 			<!-- <tr>
 				<td>Visitor Location: <?php //echo $city; ?>, <?php //echo $country; ?></p></td>

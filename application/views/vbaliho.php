@@ -1,5 +1,4 @@
-   
-	
+
 </head>
 
 <body class="bg-body">
@@ -41,17 +40,21 @@
 	// Generate the Google Maps link
 	$googleMapsLink = "https://www.google.com/maps?q=$latitude,$longitude";
 	?>
-		  
+	
+	<div class=detail-breadcrumb>
+		<a href="<?php echo base_url('produk/baliho'); ?>"><h4>Kembali Ke Baliho List</h4></a>
+	</div>
+
 	<table class=read-table>
 		<tbody>
 			<tr>
-				<td><h3><?php echo set_value('title', $baliho->title); ?></h3></td>
+				<td><h2><?php echo set_value('title', $baliho->title); ?></h2></td>
 			</tr>
 			<tr>
 				<td><h4><?php echo htmlspecialchars_decode(set_value('text', $baliho->text)); ?></h4></td>
 			</tr>
 			<tr>
-				<td><div class=slideshow-container-post><img src="<?php echo base_url($baliho->cover); ?>" height=130% width=130% alt="Cover Image"></div></td>
+				<td><div class="slideshow-container-cover"><img src="<?php echo base_url($baliho->cover); ?>" width=130% alt="Cover Image"></div></td>
 			</tr>
 			<!-- <tr>
 				<td>Visitor Location: <?php //echo $city; ?>, <?php //echo $country; ?></p></td>

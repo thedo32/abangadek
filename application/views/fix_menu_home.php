@@ -92,13 +92,24 @@ $(document).ready(function() {
     // Smooth Scroll for section links
     $('a[href^="#"]').on('click', function(event) {
         var target = $(this.getAttribute('href')); // Get the target section
-        if (target.length) {
-            event.preventDefault(); // Prevent default anchor behavior
-            // Smooth scroll to the target section
-            $('html, body').animate({
-                scrollTop: target.offset().top
-            }, 1000); // Adjust the speed (1000 ms = 1 second)
-        }
+        
+		if (window.innerWidth < 1000){
+			if (target.length) {
+				event.preventDefault(); // Prevent default anchor behavior
+				// Smooth scroll to the target section
+				$('html, body').animate({
+					scrollTop: target.offset().top - 150
+				}, 1000); // Adjust the speed (1000 ms = 1 second)
+			}
+		} else {
+			if (target.length) {
+				event.preventDefault(); // Prevent default anchor behavior
+				// Smooth scroll to the target section
+				$('html, body').animate({
+					scrollTop: target.offset().top - 100
+				}, 1000); // Adjust the speed (1000 ms = 1 second)
+			}
+		}
 
         // Collapse the navbar after clicking a menu link
         $('.navbar-collapse').collapse('hide');

@@ -45,7 +45,6 @@
 			$this->load->view("client_slider_home");
 	?>
 	<div>
-
 	<div id="about" style="width=100%;">
 	<?php 
 			$this->load->view('post_container_home');

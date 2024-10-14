@@ -40,6 +40,8 @@
    
   
         <div>
+		<?php $this->load->view('breadcrumb'); ?>
+		<br><br><br><br>	
             <div class=table-responsive>
 				<?php if ($this->session->userdata("name") === 'Alpha'):?>
 

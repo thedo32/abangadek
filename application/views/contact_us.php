@@ -13,7 +13,8 @@
 		Hubungi Kami
 	</div>
 	<div class=h10> 
-		<a href="<?php echo $whatsappLink; ?>" target=_blank class="fa fa-whatsapp"></a><br>
-		<a href="#" class="fa fa-instagram"></a><br>
-		<a href="#" class="fa fa-facebook"></a><br>
+		<a href="<?php echo $whatsappLink; ?>" target=_blank class="fa fa-whatsapp"></a>
+		<a href="#" class="fa fa-instagram"></a>
+		<a href="#" class="fa fa-facebook"></a>
+		<br>
 	</div>

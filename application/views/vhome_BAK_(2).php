@@ -1,37 +1,61 @@
-<style>
-.custom-breadcrumb {
-	padding: 10px;
-	margin: 350px 10px 0 10px;
-	border-radius: 5px;
-}
 
-</style>
-    
 </head>
 
 <body class="bg-body">
 	<div class=fix-navbar>
 		<?php 
 			$this->load->view("fix_logo");
-			$this->load->view("fix_menu");
-			$this->load->view("header_slider");
-			// $this->load->view('side_post');
 		?>
+		
+	
+
+	 <!-- <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button" id="close-button">tutup &times;</span>
+			<?php // $this->load->view("pop_up_slider"); popup sementara disembunyikan dulu
+				
+			?>
+            
+        </div>
+    </div> -->
+	
+	<?php 
+		$this->load->view("fix_menu_home");
+		// $this->load->view('side_post');
+	?>
+	</div>
+		
+	<?php 
+		$this->load->view("home_slider");
+		$this->load->view('image_slider');
+		$this->load->view('wa_container');
+		
+	?>
+
+	<div id="product" style="width=100%;">
+	<?php 
+			$this->load->view('product_slider_home');
+			//$this->load->view('about_slider_home');
+	?>
 	</div>
 
-	 <?php
-		$this->load->view('image_slider');
-		?>
-		<br><br><br><br><br><br><br><br>
-	<?php
-		$this->load->view('breadcrumb');
-		$this->load->view('product_slider');
-		$this->load->view('wa_container');
-		$this->load->view('product_container');
+
+	<div id="client" style="width=100%;">
+	<?php 
+			$this->load->view("client_slider_home");
 	?>
+	<div>
+
+	<div id="about" style="width=100%;">
+	<?php 
+			$this->load->view('post_container_home');
+	?>
+	<div>
+
+
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Ûp</button>
 	<br><br>
-
+	
 	
 
     <script>
@@ -64,9 +88,11 @@
 			 });
 			}
 		});
-
+			
 
 		// for expand and collapse below navbar
-		shiftBelowElements(".slideshow-container", 150, 270, 1, 2);
+		// shiftBelowContainers();
+		//window.onload = shiftBelowContainersHome;
+
 		imageClickable();
 	</script>

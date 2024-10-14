@@ -67,7 +67,8 @@
     <p id="addeditSuccessMessage" style="color: green;"><?php echo $this->session->tempdata('edit_success'); ?></p>
     <?php endif; ?>
 
-	<br>
+	<?php $this->load->view('breadcrumb'); ?>
+	<br><br>
 	<table style="margin:20px !important; ">
 	<tr>
 		<h2>&nbsp;&nbsp;&nbsp;Peta Lokasi Baliho</h2>
@@ -354,9 +355,7 @@ L.control.layers(baseLayers, overlayMaps, {position: "topleft"}).addTo(map);
 <!-- end of tom tom map -->
 
 
-<br>
-
-   
+<br><br><br><br>   
   
         <div>
             <div class=table-responsive>

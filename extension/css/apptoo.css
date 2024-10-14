@@ -5265,8 +5265,8 @@ textarea.form-control-lg {
 	--bs-breadcrumb-padding-x: 0;
 	--bs-breadcrumb-padding-y: 0;
 	--bs-breadcrumb-margin-bottom: 1rem;
-	--bs-breadcrumb-bg:;
-	--bs-breadcrumb-border-radius:;
+	--bs-breadcrumb-bg: transparent;
+	--bs-breadcrumb-border-radius: 5px;
 	--bs-breadcrumb-divider-color: #6c757d;
 	--bs-breadcrumb-item-padding-x: 0.5rem;
 	--bs-breadcrumb-item-active-color: #6c757d;
@@ -5288,7 +5288,7 @@ textarea.form-control-lg {
 		float: left;
 		padding-right: var(--bs-breadcrumb-item-padding-x);
 		color: var(--bs-breadcrumb-divider-color);
-		content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
+		content: var(--bs-breadcrumb-divider, ">") /* rtl: var(--bs-breadcrumb-divider, "/") */;
 	}
 
 .breadcrumb-item.active {
@@ -12679,25 +12679,25 @@ textarea.form-control-lg {
 
 
 /* go top button */
+/* Go to Top Button */
 #myBtn {
 	display: none; /* Hidden by default */
 	position: fixed; /* Fixed position */
-	bottom: 0; /* Place the button at the bottom of the page */
-	right: 30px; /* Place the button 30px from the right */
-	font-size: 28px; /* Increase font size */
-	border: none; /* Remove borders */
+	bottom: 30px; /* Position at the bottom */
+	right: 30px; /* Position 30px from the right */
+	width: 60px; /* Set width */
+	height: 60px; /* Set height */
+	border-radius: 50%; /* Make the button circular */
+	border: none; /* Tiny border */
+	background-color: transparent; /* Transparent background */
+	color: white; /* Button foreground color */
+	-webkit-text-stroke: 0.5px #dc3545; /* width and color */
+	font-size: 35px; /* Increase font size */
+	cursor: pointer; /* Add pointer on hover */
 	outline: none; /* Remove outline */
-	background-color: #dc3545aa; /* Set a background color */
-	color: white; /* Text color */
-	cursor: pointer; /* Add a mouse pointer on hover */
-	padding: 15px; /* Some padding */
-	border-radius: 10px 10px 0 0; /* Rounded corners */
 	z-index: 2005;
+	transition: background 0.3s ease-in-out; /* Smooth transition for background animation */
 }
-
-	#myBtn:hover {
-		background-color: #555; /* Add a dark-grey background on hover */
-	}
 
 /*end of go top button */
 
@@ -13039,10 +13039,9 @@ img {
 	border: none;
 	display: block;
 	border-radius: 10px;
-	max-width: 380px;
-	position: relative;
 	margin-top: -10px;
-	margin-bottom: 20px;
+	max-width: 450px;
+	position: relative;
 	margin-left: auto;
 	margin-right: auto;
 	animation: swing 1.5s ease-in-out 0s;
@@ -13074,10 +13073,9 @@ img {
 
 .image-container-cl-home {
 	border: 2px solid;
-	background-color: transparent;
 	display: block;
 	border-radius: 10px;
-	max-width: 530px;
+	max-width: 800px;
 	position: relative;
 	margin-bottom: 20px;
 	margin-left: auto;
@@ -13110,7 +13108,39 @@ img {
 	text-align: center;
 }
 
+.texts-container-cl-about {
+	position: relative;
+	padding-top: 10px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+	color: red;
+	text-align: center;
+}
+
+.texts-container-cl-client {
+	position: relative;
+	padding-top: 10px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+	color: red;
+	text-align: center;
+}
+
 .texts-container-cl-home {
+	position: relative;
+	padding-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+	color: white;
+	text-align: center;
+}
+
+.texts-container-cl-product {
 	position: relative;
 	padding: 10px;
 	margin-top: 100px;
@@ -13225,7 +13255,7 @@ img {
 	}
 
 .slideshow-container-post {
-	max-width: 1600px;
+	max-width: 600px;
 	position: relative;
 	padding: 30px;
 	display: block;
@@ -13246,6 +13276,8 @@ img {
 		font-size: small;
 	}
 
+
+
 .slideshow-container-map {
 	max-width: 600px;
 	position: relative;
@@ -13255,6 +13287,38 @@ img {
 	margin-bottom: 30px;
 	font-size: x-small;
 	text-align: center;
+}
+
+.slideshow-container-cover {
+	max-width: 800px;
+	position: relative;
+	padding: 10px 30px 10px 10px;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	font-size: x-small;
+	text-align: center;
+}
+
+	.slideshow-container-cover:hover {
+		transition: ease 2s;
+		transform: scale(1.1);
+		margin-top: 50px;
+		font-size: small;
+	}
+
+/* On smaller screens */
+@media only screen and (max-width: 1000px) {
+	.slideshow-container-cover {
+			max-width: 600px !important;
+	}
+
+		.slideshow-container-cover:hover {
+			transition: ease 2s;
+			transform: scale(1.2);
+			margin-left: auto;
+			margin-right: auto;
+		}
 }
 
 
@@ -13487,7 +13551,7 @@ img {
 
 
 .product-table {
-	width: 100.1%; /* Full width */
+	width: 100%; /* Full width */
 	max-width: 2000px; /* Optional: set a maximum width if desired */
 	display: block;
 	background-color: white;
@@ -13497,7 +13561,7 @@ img {
 }
 
 	.product-table td {
-		width: 33.4%;
+		width: 33.3%;
 		vertical-align: middle;
 		text-align: center;
 	}
@@ -13512,19 +13576,27 @@ img {
 		}
 
 .product-table-home {
-	width: 100.1%; /* Full width */
+	width: 100%; /* Full width */
 	max-width: 2000px; /* Optional: set a maximum width if desired */
 	display: block;
-	background-color: #ffffff;
 	color: black;
 	font-family: "Tilt Neon", sans-serif;
 	box-sizing: border-box; /* Ensures padding doesn't affect the width */
+	table-layout: fixed; /* Forces all cells to have the same width */
 }
 
-	.product-table-home td {
-		width: 33.4%;
+	.product-table-home tr {
+		height:250px !important;
 		vertical-align: middle;
 		text-align: center;
+	}
+	
+	.product-table-home td {
+		width: 50%;
+		vertical-align: middle;
+		align-content: space-evenly;
+		text-align: justify; /* Justify text */
+		padding: 10px; /* Add padding for better readability */
 	}
 
 		.product-table-home td:hover {
@@ -13533,11 +13605,13 @@ img {
 		}
 
 		.product-table-home td:not(:hover) {
-			width: 10%;
+			width: 25%;
 		}
 
+
+
 .about-table {
-	width: 100.1%; /* Full width */
+	width: 100%; /* Full width */
 	max-width: 2000px; /* Optional: set a maximum width if desired */
 	display: block;
 	background-color: red;
@@ -13547,7 +13621,7 @@ img {
 }
 
 	.about-table td {
-		width: 33.4%;
+		width: 33.3%;
 		vertical-align: middle;
 		text-align: center;
 	}
@@ -13562,7 +13636,7 @@ img {
 		}
 
 .about-table-home {
-	width: 100.1%; /* Full width */
+	width: 100%; /* Full width */
 	max-width: 2000px; /* Optional: set a maximum width if desired */
 	display: block;
 	background-color: white;
@@ -13572,7 +13646,7 @@ img {
 }
 
 	.about-table-home td {
-		width: 33.4%;
+		width: 50%;
 		vertical-align: middle;
 		text-align: center;
 	}
@@ -13583,7 +13657,7 @@ img {
 		}
 
 		.about-table-home td:not(:hover) {
-			width: 10%;
+			width: 25%;
 		}
 
 
@@ -13892,6 +13966,26 @@ img {
 		transform: scale(1.2);
 		transition: ease 1s;
 	}
+
+.post-container-map {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+	width: 100%;
+	border:none;
+	border-radius:5px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 25px;
+	position: relative;
+}
+
+@media only screen and (max-width: 1000px) {
+	.post-container-map {
+		width:40%;
+	}
+}
 
 .side-post-box1 {
 	/*order*/
@@ -14427,24 +14521,24 @@ body {
 	content: '';
 	position: absolute;
 	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
 	border-radius: 50%;
 	background: conic-gradient(lightgrey, white);
 	z-index: 0;
-	animation: rotateGradient 10s linear infinite;
+	animation: rotateGradient 20s linear infinite;
 }
 
 /* Static image inside */
 .rotating-gradient img {
 	position: relative;
 	z-index: 1; /* Keep the image above the rotating background */
-	width: 80px; /* Adjust to slightly smaller than the container */
-	height: 80px; /* Adjust to slightly smaller than the container */
+	width: 90px; /* Adjust to slightly smaller than the container */
+	height: 90px; /* Adjust to slightly smaller than the container */
 	border-radius: 50%; /* Circular image */
 	display: block;
-	margin: -5px; /* Add margin to center the image within the container */
+	margin: -20px 0 0 5px; /* Add margin to center the image within the container */
 }
 
 /* Center the content for demo purposes */
@@ -14537,27 +14631,141 @@ body {
 	height: auto;
 }
 
+/* General consistency for all sections */
+.section {
+	min-height: 1200px; /* Fixed height for consistency */
+	padding: 100px 0 50px 0; /* Padding top and bottom */
+	background-size: initial;
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* Center content vertically */
+	align-items: center; /* Center content horizontally */
+}
+
+/* Individual background colors */
 #product {
 	background-color: white; /* First section background color */
-	background-size: contain;
-	padding: 50px 0; /* Padding top and bottom */
-	height: 800px; /* Fixed height */
+	padding-top: 10px;
 }
 
 #client {
 	background-color: red; /* Second section background color */
-	background-size: contain;
-	padding: 50px 0; /* Padding top and bottom */
-	height: 800px; /* Fixed height */
+	padding-top: 10px;
 }
 
 #about {
 	background-color: black; /* Third section background color */
-	background-size: contain;
-	padding: 50px 0; /* Padding top and bottom */
-	height: 1200px; /* Fixed height */
+	padding-top: 10px;
 }
 
+.members {
+	margin-left:14% !important;
+	width:400px !important;
+	border:none;
+	border-radius:5px;
+}
+
+	@media only screen and (max-width: 1000px) {
+		.members {
+			width:55% !important;
+			margin-left:22% !important;
+		}
+	}
+
+/* Custom breadcrumb container */
+.custom-breadcrumb {
+	padding: 10px;
+	margin: 75px 10px 0 10px;
+	border-radius: 5px;
+}
+
+	/* Style the breadcrumb list */
+	.custom-breadcrumb .active {
+		background-color: transparent; /* Remove the gray background */
+	}
+
+	.custom-breadcrumb ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.custom-breadcrumb a {
+		color: red !important; /* red text for all breadcrumb items */
+		-webkit-text-stroke: 0.3px black !important;
+		text-shadow: 0.2px 0.3px black !important;
+	}
+
+	/* Style each breadcrumb item */
+	.custom-breadcrumb ul li {
+		display: inline;
+		font-size: 1.5em;
+		color: red !important; /* red text for all breadcrumb items */
+		-webkit-text-stroke: 0.3px black !important;
+		text-shadow: 0.2px 0.3px black !important;
+	}
+
+		/* Add a separator between breadcrumb items */
+		.custom-breadcrumb ul li + li:before {
+			content: " ⊳ ";
+			padding: 5px;
+			color: black !important; /* red text for all breadcrumb items */
+		}
+
+		/* Highlight the active (current) page */
+		.custom-breadcrumb ul li:before + li.active {
+			font-weight: bold;
+			color: black !important; /* red text for all breadcrumb items */
+			-webkit-text-stroke: 0.3px black !important;
+			text-shadow: 0.2px 0.3px black !important;
+			padding: 10px;
+		}
+
+
+@media only screen and (max-width: 1000px) {
+	.custom-breadcrumb {
+		margin-top:25px !important;
+	}
+	.custom-breadcrumb ul li {
+		font-size: 1.7rem;
+	}
+}
+
+
+
+/* Custom breadcrumb container */
+.detail-breadcrumb {
+	padding: 10px;
+	margin: 75px 10px 0 10px;
+	border-radius: 5px;
+}
+
+	/* Style the breadcrumb list */
+	.detail-breadcrumb .active {
+		background-color: transparent; /* Remove the gray background */
+	}
+
+	.detail-breadcrumb ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.detail-breadcrumb a {
+		color: red !important; /* red text for all breadcrumb items */
+		-webkit-text-stroke: 0.3px black !important;
+		text-shadow: 0.2px 0.3px black !important;
+	}
+
+	.detail-breadcrumb h4 {
+		margin:3% 0 -200px 75% !important;
+	}
+
+@media only screen and (max-width: 1000px) {
+	.detail-breadcrumb h4 {
+		margin:12% 0 -200px 72% !important;
+	}
+}
 
 
 /* ------------ end of my css for additional ------- */

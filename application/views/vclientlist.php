@@ -15,6 +15,14 @@
     });
 </script>
 
+<style>
+.custom-breadcrumb {
+	padding: 10px;
+	margin: 350px 10px 0 10px;
+	border-radius: 5px;
+}
+</style>
+
 </head>
 
 <body class="bg-body">
@@ -33,8 +41,9 @@
 		$this->load->view("client_slider");
 		$this->load->view('image_slider');
 		$this->load->view('wa_container');
+		$this->load->view('breadcrumb'); 
 	?>
-	<br><br><br><br><br><br>
+	<br><br>
 
 
 	<!-- notification if add or edit news success-->

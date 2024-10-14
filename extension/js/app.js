@@ -1,22 +1,38 @@
-// Get the button
-let mybutton = document.getElementById("myBtn");
+//go to top button
+document.addEventListener('DOMContentLoaded', function () {
+	// Get the button
+	let mybutton = document.getElementById("myBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
+	// When the user scrolls, show the button and update the border animation
+	window.onscroll = function () {
+		scrollFunction();
+		animateBorder();
+	};
 
-function scrollFunction() {
-	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		mybutton.style.display = "block";
-	} else {
-		mybutton.style.display = "none";
+	function scrollFunction() {
+		if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			mybutton.style.display = "block";
+		} else {
+			mybutton.style.display = "none";
+		}
 	}
-}
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-}
+	// Scroll to the top of the document when the button is clicked
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+
+	// Animate the border based on scroll position
+	function animateBorder() {
+		const scrollTop = document.documentElement.scrollTop;
+		const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		const scrollPercent = (scrollTop / scrollHeight) * 100; // Calculate the scroll percentage
+
+		// Update the button's border animation based on the scroll percentage
+		mybutton.style.background = `conic-gradient(#dc3545 ${scrollPercent}%, transparent ${scrollPercent}%)`;
+	}
+});
 
 
 

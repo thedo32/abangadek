@@ -84,7 +84,9 @@
 			</nav>
 		</div>
 	</div>
+
 	
+
 <script>
 // Get the current URL path
 let currentUrl = window.location.pathname;
