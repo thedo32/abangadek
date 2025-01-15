@@ -78,11 +78,24 @@ use GeoIp2\Database\Reader;
             $record = $reader->city($ip_address);
             $data['city'] = $record->city->name;
             $data['country'] = $record->country->name;
+			
+			// Get latitude and longitude
+			$data['lat'] = $record->location->latitude ?? 0;
+			$data['lon'] = $record->location->longitude ?? 0;
+
 			if  ($data['city'] == 'Unknown') { $data['city'] = 'Other'; }
 			if  ($data['country'] == 'Unknown') { $data['country'] = 'Other'; }
+
+			// error_log("IP: $ip_address, City: $city, Country: $country, Latitude: $latitude, Longitude: $longitude");
+
+
         } catch (Exception $e) {
+			//error_log("GeoIP Error: " . $e->getMessage());
+
             $data['city'] = 'Other';
             $data['country'] = 'Other';
+			$data['lat'] = 0;
+			$data['lon'] = 0;
         }
 
 		//load the view page
