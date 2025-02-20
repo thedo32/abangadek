@@ -92,7 +92,7 @@ class Printing extends CI_Controller {
 			if  ($data['city'] == 'Unknown') { $data['city'] = 'Other'; }
 			if  ($data['country'] == 'Unknown') { $data['country'] = 'Other'; }
 			
-			error_log("IP: $ip_address, City: $city, Country: $country, Latitude: $latitude, Longitude: $longitude");
+			//error_log("IP: $ip_address, City: $city, Country: $country, Latitude: $latitude, Longitude: $longitude");
 
 		
 		} catch (Exception $e) {
